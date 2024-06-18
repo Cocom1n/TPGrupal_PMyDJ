@@ -17,6 +17,9 @@ class Gato extends GameObject{
     line(getPos().x,getPos().y,vD.x,vD.y);
   }
   
+  public void mira(){
+    
+  }
   
   
 }

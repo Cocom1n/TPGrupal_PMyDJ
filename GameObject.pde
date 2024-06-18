@@ -2,6 +2,7 @@ abstract class GameObject{
   protected PVector posicion;
   protected PVector tamanio;
   protected float velocidad;
+  protected Boolean destruir;
   protected PImage imagen;
   
   
@@ -24,6 +25,13 @@ abstract class GameObject{
   }
   public float getVel() { 
     return this.velocidad; 
+  }
+  
+  public boolean getDestruir() {
+    return destruir;
+  }
+  public void setDestruir(boolean valor) {
+    destruir = valor;
   }
   
 }
