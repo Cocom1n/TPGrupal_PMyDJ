@@ -1,8 +1,8 @@
-class Enemigo extends GameObject{
+class EnemigoUno extends GameObject{
   private float timer;
   //private SpriteGestor spriteGestor= new SpriteGestor();
   
-  public Enemigo(){
+  public EnemigoUno(){
     this.imagen = loadImage("alien1.png");
     setPos(new PVector(40, height/3));
     setVel(height/30);

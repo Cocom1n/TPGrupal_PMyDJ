@@ -1,6 +1,6 @@
 static class ColliderUno {
 
-  public static boolean manejarColision(ArrayList<Bullets> list, Enemigo b) {
+  public static boolean manejarColision(ArrayList<Bullets> list, EnemigoUno b) {
     ArrayList<Bullets> sortedList = new ArrayList<Bullets>(list);
     sortedList.sort((a1, a2) -> Float.compare(a1.posicion.x, a2.posicion.x));
 
@@ -17,7 +17,7 @@ static class ColliderUno {
     return false;
   }
 
-  public static boolean manejarColision(Pescado a, Enemigo b) {
+  public static boolean manejarColision(Pescado a, EnemigoUno b) {
     if (b.posicion.x > a.posicion.x + a.tamanio.y) {
       return false;
     } else {

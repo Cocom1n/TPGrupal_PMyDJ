@@ -1,7 +1,7 @@
 private PVector mira;
 private Gato player;
 private Pescado area;
-private Enemigo enemigo1;
+private EnemigoUno enemigo1;
 private PImage fondo;
 private int estado;
 private SpriteGestor spriteGestor;
@@ -14,7 +14,7 @@ void setup(){
   this.fondo = loadImage("data/fondo.png");
   estado = MaquinaEstados.INSTRUCCIONANDO;
   player = new Gato();
-  enemigo1 = new Enemigo();
+  enemigo1 = new EnemigoUno();
   spriteGestor= new SpriteGestor();
   area = new Pescado();
   mira = new PVector(0,0);
