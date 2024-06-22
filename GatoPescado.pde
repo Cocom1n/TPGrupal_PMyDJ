@@ -35,6 +35,7 @@ void draw(){
       area.display();
       player.display();
       enemigo1.display();
+      enemigo1.move();
       circle(mira.x,mira.y,15);
       disparar.cosoo();
       break;

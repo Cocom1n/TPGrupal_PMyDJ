@@ -1,15 +1,25 @@
 class Enemigo extends GameObject{
-  private float angulo;
+  private PVector posicion;
+  private PVector velocidad;
+  private float timer;
+  //private SpriteGestor spriteGestor= new SpriteGestor();
   
   public Enemigo(){
-    setPos(new PVector(40, height/4));
-    angulo=0;
+    this.posicion = new PVector(40, height/3);
+    this.velocidad = new PVector(0,height/20);
+    this.imagen = loadImage("alien1.png");
+    timer = 0.0;
   }
   
   public void display(){
     fill(222,22,2);
-    circle(getPos().x,getPos().y,20);
-    angulo+=0.05;
-    getPos().y+=sin(angulo)*10;
+    image(imagen, this.posicion.x, this.posicion.y);
   }
+  
+  public void move(){
+    timer += Time.getDeltaTime(frameRate);
+    this.posicion.x += this.velocidad.y * Time.getDeltaTime(frameRate);
+    this.posicion.y += (6*sin(timer*2));
+  }
+  
 }
