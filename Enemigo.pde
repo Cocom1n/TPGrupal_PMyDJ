@@ -1,5 +1,4 @@
 class Enemigo extends GameObject{
- 
   private float angulo;
   
   public Enemigo(){
