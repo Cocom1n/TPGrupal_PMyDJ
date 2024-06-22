@@ -20,6 +20,7 @@ class Enemigo3 extends GameObject{
     aumentoTiempo = 0.09;
     y =0;
     lugarAparicion = 1;
+    setDestruir(false);
   }
   
   public void display(){

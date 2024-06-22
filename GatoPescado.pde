@@ -44,6 +44,8 @@ void draw(){
       disparar.cosoo();
       enemigo1.setDestruir(ColliderUno.manejarColision(area, enemigo1));
       enemigo1.setDestruir(ColliderUno.manejarColision(disparar.balasJ,enemigo1));
+      enemigo3.setDestruir(ColliderUno.manejarColision(area, enemigo3));
+      enemigo3.setDestruir(ColliderUno.manejarColision(disparar.balasJ,enemigo3));
       break;
     }
   }
