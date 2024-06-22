@@ -39,7 +39,7 @@ void draw(){
       circle(mira.x,mira.y,15);
       disparar.cosoo();
       enemigo1.setDestruir(ColliderUno.manejarColision(area, enemigo1));
-      enemigo1.setDestruir(ColliderUno.manejarColision(disparar.balasJ,enemigo1)); = ColliderUno.manejarColision(disparar.balasJ,enemigo1);
+      enemigo1.setDestruir(ColliderUno.manejarColision(disparar.balasJ,enemigo1));
       break;
     }
   }
