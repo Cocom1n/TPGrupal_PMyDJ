@@ -6,6 +6,7 @@ private PImage fondo;
 private int estado;
 private SpriteGestor spriteGestor;
 private ShootGestor disparar;
+Enemigo3 enemigo3;
 
 
 void setup(){
@@ -15,6 +16,7 @@ void setup(){
   estado = MaquinaEstados.INSTRUCCIONANDO;
   player = new Gato();
   enemigo1 = new EnemigoUno();
+  enemigo3 = new Enemigo3();
   spriteGestor= new SpriteGestor();
   area = new Pescado();
   mira = new PVector(0,0);
@@ -36,6 +38,8 @@ void draw(){
       player.display();
       enemigo1.display();
       enemigo1.move();
+      enemigo3.display();
+      enemigo3.actualizar();
       circle(mira.x,mira.y,15);
       disparar.cosoo();
       enemigo1.setDestruir(ColliderUno.manejarColision(area, enemigo1));
