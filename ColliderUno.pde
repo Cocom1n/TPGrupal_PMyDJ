@@ -6,7 +6,7 @@ static class ColliderUno {
 
     for (int i = 0; i < sortedList.size(); i++) {
       Bullets a = sortedList.get(i);
-      if (b.posicion.x > a.posicion.x + a.tamanio.y) break; // No puede haber colisión más allá de esto
+      //if (b.posicion.x > a.posicion.x + a.tamanio.y) break; // No puede haber colisión más allá de esto
       // Verificación precisa
       if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
         // Colisión enemigo con bala
@@ -36,7 +36,7 @@ static class ColliderUno {
 
     for (int i = 0; i < sortedList.size(); i++) {
       Bullets a = sortedList.get(i);
-      if (b.posicion.x > a.posicion.x + a.tamanio.y) break; // No puede haber colisión más allá de esto
+      //if (b.posicion.x > a.posicion.x + a.tamanio.y) break; // No puede haber colisión más allá de esto
       // Verificación precisa
       if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
         // Colisión enemigo con bala
