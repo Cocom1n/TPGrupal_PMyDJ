@@ -1,4 +1,3 @@
-
 private PVector mira;
 private Gato player;
 private Pescado area;
@@ -7,13 +6,9 @@ private PImage fondo;
 private int estado;
 private SpriteGestor spriteGestor;
 private ShootGestor disparar;
-private SpawnerEnemigo spawnerEnemigo;
-private EnemyShooter enemigo2;
-private Shooter EDisparo;
-private PVector OrigenEnemy;
 Enemigo3 enemigo3;
-long tiempoInicial;
-int tiempo;
+SpawnerEnemigo spawnerEnemigo;
+
 
 void setup(){
   size(800,600);
@@ -22,19 +17,17 @@ void setup(){
   estado = MaquinaEstados.INSTRUCCIONANDO;
   player = new Gato();
   enemigo1 = new EnemigoUno();
-  enemigo2= new EnemyShooter();
-  EDisparo= new Shooter();
+  enemigo3 = new Enemigo3();
+  spawnerEnemigo = new SpawnerEnemigo();
   spriteGestor= new SpriteGestor();
   area = new Pescado();
   mira = new PVector(0,0);
   disparar = new ShootGestor();
-  spawnerEnemigo = new SpawnerEnemigo();
 }
-
 
 void draw(){
   
-  OrigenEnemy= new PVector(enemigo2.getPos().x,enemigo2.getPos().y);
+  
   switch(estado){
     case MaquinaEstados.INSTRUCCIONANDO:{
       spriteGestor.animate(new PVector(width/2,height/2),new PVector(800,600),"data/catfish.jpg");
@@ -47,32 +40,19 @@ void draw(){
       player.display();
       enemigo1.display();
       enemigo1.move();
+      enemigo3.display();
+      enemigo3.actualizar();
       spawnerEnemigo.colocarEnemigo();
-      spawnerEnemigo.eliminarEnemigo();
-      tiempoRespawn(1000);
-      EDisparo.proyectil();
-      enemigo2.display();
       circle(mira.x,mira.y,15);
       disparar.cosoo();
       enemigo1.setDestruir(ColliderUno.manejarColision(area, enemigo1));
       enemigo1.setDestruir(ColliderUno.manejarColision(disparar.balasJ,enemigo1));
-      //enemigo3.setDestruir(ColliderUno.manejarColision(area, enemigo3));
-      //enemigo3.setDestruir(ColliderUno.manejarColision(disparar.balasJ,enemigo3));
+      enemigo3.setDestruir(ColliderUno.manejarColision(area, enemigo3));
+      enemigo3.setDestruir(ColliderUno.manejarColision(disparar.balasJ,enemigo3));
       break;
     }
   }
-
-}
-
-public void tiempoRespawn(int tiempoEspera){
-  if(millis()>=tiempoInicial+tiempoEspera && spawnerEnemigo.getSePuedeCrear() == true){
-    tiempo++;
-    if(tiempo==5){
-     spawnerEnemigo.crearEnemigo();
-      tiempo=0;
-    }
-    tiempoInicial=millis();
-  }
+ 
 }
 
 void mouseMoved() {
@@ -80,9 +60,6 @@ void mouseMoved() {
 }
 
 public void keyPressed() {
-  if(keyCode == BACKSPACE){
-   EDisparo.EnemyShoot();
-  } 
   if (keyCode == SHIFT && (estado == MaquinaEstados.INSTRUCCIONANDO)){
     estado = MaquinaEstados.JUGANDO;
   }

@@ -15,7 +15,7 @@ class Shooter extends GameObject{
     
     direcc = new PVector(width/2-10,height/2);
     PVector d = PVector.sub(direcc,OrigenEnemy).normalize();
-    println(d);
+    //println(d);
     BulletEnemy nuevabala = new BulletEnemy(d, OrigenEnemy);
     BalasE.add(nuevabala);
   }

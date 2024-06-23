@@ -12,7 +12,7 @@ class ShootGestor extends GameObject{
     origen = new PVector(width/2-10,height/2);
     direcc = new PVector(mira.x,mira.y);
     PVector d = PVector.sub(direcc,origen).normalize();
-    println(d);
+    //println(d);
     Bullets nuevabala = new Bullets(d, origen);
     balasJ.add(nuevabala);
   }

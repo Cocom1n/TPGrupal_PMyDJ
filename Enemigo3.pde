@@ -9,7 +9,8 @@ class Enemigo3 extends GameObject{
    private float y;
    private int lugarAparicion;
   
-  public Enemigo3(){
+  public Enemigo3(int lugarAparicion){
+    this.lugarAparicion=lugarAparicion;
     tamanio = (new PVector(50,50));
     velocidad = 1;
     escala= 20;
@@ -19,7 +20,6 @@ class Enemigo3 extends GameObject{
     x = -11.5;
     aumentoTiempo = 0.09;
     y =0;
-    lugarAparicion = 1;
     setDestruir(false);
   }
   
@@ -49,9 +49,27 @@ class Enemigo3 extends GameObject{
   
   void actualizar(){
     x += aumentoTiempo;
-    if (x> 11.5){
-      x=-11.5;
-      lugarAparicion = int(random(1,5));
-    }
   }
+  
+   public float getX() {
+    return this.x;
+  }
+  public void setX(float x) {
+     this.x=x;
+  }
+  
+  public float getY() {
+    return this.y;
+  }
+  public void setY(float y) {
+     this.y=y;
+  }
+  
+  public int getEscala() {
+    return this.escala;
+  }
+  public void setEscala(int escala) {
+     this.escala=escala;
+  }
+
 }
