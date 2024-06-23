@@ -1,3 +1,4 @@
+
 private PVector mira;
 private Gato player;
 private Pescado area;
@@ -7,7 +8,9 @@ private int estado;
 private SpriteGestor spriteGestor;
 private ShootGestor disparar;
 Enemigo3 enemigo3;
-
+private EnemyShooter enemigo2;
+private Shooter EDisparo;
+private PVector OrigenEnemy;
 
 void setup(){
   size(800,600);
@@ -16,16 +19,19 @@ void setup(){
   estado = MaquinaEstados.INSTRUCCIONANDO;
   player = new Gato();
   enemigo1 = new EnemigoUno();
+  enemigo2= new EnemyShooter();
   enemigo3 = new Enemigo3();
+  EDisparo= new Shooter();
   spriteGestor= new SpriteGestor();
   area = new Pescado();
   mira = new PVector(0,0);
   disparar = new ShootGestor();
 }
 
+
 void draw(){
   
-  
+  OrigenEnemy= new PVector(enemigo2.getPos().x,enemigo2.getPos().y);
   switch(estado){
     case MaquinaEstados.INSTRUCCIONANDO:{
       spriteGestor.animate(new PVector(width/2,height/2),new PVector(800,600),"data/catfish.jpg");
@@ -40,6 +46,8 @@ void draw(){
       enemigo1.move();
       enemigo3.display();
       enemigo3.actualizar();
+      EDisparo.proyectil();
+      enemigo2.display();
       circle(mira.x,mira.y,15);
       disparar.cosoo();
       enemigo1.setDestruir(ColliderUno.manejarColision(area, enemigo1));
@@ -57,6 +65,9 @@ void mouseMoved() {
 }
 
 public void keyPressed() {
+  if(keyCode == BACKSPACE){
+   EDisparo.EnemyShoot();
+  } 
   if (keyCode == SHIFT && (estado == MaquinaEstados.INSTRUCCIONANDO)){
     estado = MaquinaEstados.JUGANDO;
   }
