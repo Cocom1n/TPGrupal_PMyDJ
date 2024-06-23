@@ -48,16 +48,16 @@ void draw(){
       enemigo1.display();
       enemigo1.move();
       spawnerEnemigo.colocarEnemigo();
+      disparar.cosoo();
+      enemigo1.setDestruir(ColliderUno.manejarColision(area, enemigo1));
       spawnerEnemigo.eliminarEnemigo();
       tiempoRespawn(1000);
       EDisparo.proyectil();
       enemigo2.display();
       circle(mira.x,mira.y,15);
-      disparar.cosoo();
-      enemigo1.setDestruir(ColliderUno.manejarColision(area, enemigo1));
       enemigo1.setDestruir(ColliderUno.manejarColision(disparar.balasJ,enemigo1));
       //enemigo3.setDestruir(ColliderUno.manejarColision(area, enemigo3));
-      //enemigo3.setDestruir(ColliderUno.manejarColision(disparar.balasJ,enemigo3));
+      //enemigo3.setDestruir(ColliderUno.balasEenemigo3(disparar.balasJ,enemigo3));
       break;
     }
   }

@@ -30,18 +30,13 @@ static class ColliderUno {
     }
   }
   
-  public static boolean manejarColision3(ArrayList<Bullets> list, SpawnerEnemigo b) {
-    ArrayList<Bullets> sortedList = new ArrayList<Bullets>(list);
-    sortedList.sort((a1, a2) -> Float.compare(a1.posicion.x, a2.posicion.x));
-    for (int i = 0; i < sortedList.size(); i++) {
-      for(int j=0; j<b.enemigo3.size();j++){
-      Bullets a = sortedList.get(i);
-      if (dist(a.posicion.x, a.posicion.y, b.enemigo3.get(j).getPos().x, b.enemigo3.get(j).getPos().y) < (a.tamanio.x / 2 + b.enemigo3.get(j).getTam().x / 2)) {
-        // Colisión enemigo con bala
-        println("Lo siento bro");
-        return true;
+  public static boolean manejarColision3(ArrayList<Bullets> list, Enemigo3 b) {
+    for (int i = 0; i < list.size(); i++) {
+      Bullets a = list.get(i);
+      if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
+        list.remove(a);  // Eliminar la bala de la lista
+        return true;  // Colisión detectada
       }
-    }
     }
     return false;
   }
@@ -55,4 +50,5 @@ static class ColliderUno {
     }
   return false;
   }
+  
 }

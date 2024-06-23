@@ -11,6 +11,7 @@ class Enemigo3 extends GameObject{
   
   public Enemigo3(int lugarAparicion){
     this.lugarAparicion=lugarAparicion;
+    posicion = (new PVector(0,0));
     tamanio = (new PVector(50,50));
     velocidad = 1;
     escala= 20;
