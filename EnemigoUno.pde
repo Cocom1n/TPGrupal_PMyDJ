@@ -10,14 +10,13 @@ class EnemigoUno extends GameObject {
     setDestruir(false);
     timer = 0.0;
     spawn = int(random(1,3));
+    if(spawn == 2){
+      setPos(new PVector(width, height/3));
+    }
   }
 
   public void display() {
-    if (spawn == 1) {
       image(imagen, this.posicion.x, this.posicion.y);
-    } else {
-      image(imagen, this.posicion.x + width, this.posicion.y + height/3);
-    }
   }
 
   public void move() {
@@ -27,7 +26,7 @@ class EnemigoUno extends GameObject {
       this.posicion.y += (2.5 * sin(timer));
     } else {
       this.posicion.x -= this.velocidad * Time.getDeltaTime(frameRate);
-      this.posicion.y -= (2.5 * sin(timer));
+      this.posicion.y += (2.5 * sin(timer));
     }
   }
 }
