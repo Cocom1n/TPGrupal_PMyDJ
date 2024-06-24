@@ -13,6 +13,8 @@ private Shooter EDisparo;
 private PVector OrigenEnemy;
 private long tiempoInicial;
 private int tiempo;
+private long tiempoInicial2;
+private int timeD;
 
 void setup(){
   size(800,600);
@@ -51,6 +53,7 @@ void draw(){
       enemigo1.setDestruir(ColliderUno.manejarColision(area, enemigo1));
       spawnerEnemigo.eliminarEnemigo();
       tiempoRespawn(1000);
+      disparo(500);
       EDisparo.proyectil();
       enemigo2.display();
       circle(mira.x,mira.y,15);
@@ -60,7 +63,16 @@ void draw(){
   }
 
 }
-
+public void disparo(int tiempoDisparo){
+ if(millis()>=tiempoInicial2+tiempoDisparo && spawnerEnemigo.getSePuedeCrear() == true){
+    timeD++;
+    if(timeD==3){
+     EDisparo.EnemyShoot();
+      timeD=0;
+    }
+    tiempoInicial2=millis();
+  }
+}
 public void tiempoRespawn(int tiempoEspera){
   if(millis()>=tiempoInicial+tiempoEspera && spawnerEnemigo.getSePuedeCrear() == true){
     tiempo++;
@@ -77,9 +89,7 @@ void mouseMoved() {
 }
 
 public void keyPressed() {
-  if(keyCode == BACKSPACE){
-   EDisparo.EnemyShoot();
-  } 
+
   if (keyCode == SHIFT && (estado == MaquinaEstados.INSTRUCCIONANDO)){
     estado = MaquinaEstados.JUGANDO;
   }
