@@ -50,5 +50,24 @@ static class ColliderUno {
     }
   return false;
   }
+    public static boolean manejarColisionE2(Pescado a, Shooter b) {
+     for(int i=0; i<b.BalasE.size();i++){
+       if (dist(a.posicion.x, a.posicion.y, b.BalasE.get(i).getPos().x, b.BalasE.get(i).getPos().y) < (a.tamanio.x / 2 + b.BalasE.get(i).getTam().x / 2)) {
+          println("dame pescado");
+          return true;
+       }
+    }
+  return false;
+  } 
+ public static boolean manejarColisionB2(ArrayList<Bullets> list2, BulletEnemy b) {
+    for (int i = 0; i < list2.size(); i++) {
+      Bullets a = list2.get(i);
+      if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
+        list2.remove(a);  // Eliminar la bala de la lista
+        return true;  // Colisión detectada
+      }
+    }
+    return false;
+  }
   
 }
