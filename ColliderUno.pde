@@ -43,8 +43,8 @@ static class ColliderUno {
 
   public static boolean manejarColisionE3(Pescado a, SpawnerEnemigo b) {
      for(int i=0; i<b.enemigo3.size();i++){
-       if (dist(a.posicion.x, a.posicion.y, b.enemigo3.get(i).getPos().x, b.enemigo3.get(i).getPos().y) < (a.tamanio.x / 2 + b.enemigo3.get(i).getTam().x / 2)) {
-          println("dame pescado");
+       if (dist(a.posicion.x, a.posicion.y, b.enemigo3.get(i).getPos().x, b.enemigo3.get(i).getPos().y) < (a.tamanio.x / 2 + b.enemigo3.get(i).getTam().x / 2)) { 
+         println("dame pescado");
           return true;
        }
     }

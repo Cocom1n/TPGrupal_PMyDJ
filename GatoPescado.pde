@@ -11,9 +11,8 @@ private SpawnerEnemigo spawnerEnemigo;
 private EnemyShooter enemigo2;
 private Shooter EDisparo;
 private PVector OrigenEnemy;
-Enemigo3 enemigo3;
-long tiempoInicial;
-int tiempo;
+private long tiempoInicial;
+private int tiempo;
 
 void setup(){
   size(800,600);
@@ -56,8 +55,6 @@ void draw(){
       enemigo2.display();
       circle(mira.x,mira.y,15);
       enemigo1.setDestruir(ColliderUno.manejarColision(disparar.balasJ,enemigo1));
-      //enemigo3.setDestruir(ColliderUno.manejarColision(area, enemigo3));
-      //enemigo3.setDestruir(ColliderUno.balasEenemigo3(disparar.balasJ,enemigo3));
       break;
     }
   }
