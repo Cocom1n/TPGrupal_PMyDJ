@@ -1,6 +1,6 @@
 static class Collider{
 
-  public static boolean manejarColision(ArrayList<Bullets> list, EnemigoUno b) {
+  public static boolean manejarColision(ArrayList<Bullets> list, Enemigo1 b) {
     for (int i = 0; i < list.size(); i++) {
       Bullets a = list.get(i);
       if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
@@ -11,7 +11,7 @@ static class Collider{
     return false;
   }
 
-  public static boolean manejarColision(Pescado a, EnemigoUno b) {
+  public static boolean manejarColision(Pescado a, Enemigo1 b) {
       if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
         return true;
       }

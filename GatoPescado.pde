@@ -1,39 +1,25 @@
-
-private PVector mira;
-private Gato player;
-private Pescado area;
 private PImage fondo;
-private int estado;
 private SpriteGestor spriteGestor;
-private ShootGestor disparar;
-private SpawnerEnemigoUno spawnerEnemigoUno;
-private SpawnerEnemigo spawnerEnemigo;
-private EnemyShooter enemigo2;
+private int estado;
 private PVector OrigenEnemy;
 private long tiempoInicial;
 private int tiempo;
 private long tiempoInicial2;
 private int timeD;
+private Nivel jugando;
 
 void setup() {
   size(800, 600);
   imageMode(CENTER);
   this.fondo = loadImage("data/fondo.png");
   estado = MaquinaEstados.INSTRUCCIONANDO;
-  player = new Gato();
-  spawnerEnemigoUno = new SpawnerEnemigoUno();
-  enemigo2= new EnemyShooter();
   spriteGestor= new SpriteGestor();
-  area = new Pescado();
-  mira = new PVector(0, 0);
-  disparar = new ShootGestor();
-  spawnerEnemigo = new SpawnerEnemigo();
+  jugando = new Nivel();
 }
 
 
 void draw() {
 
-  OrigenEnemy= new PVector(enemigo2.getPos().x, enemigo2.getPos().y);
   switch(estado) {
   case MaquinaEstados.INSTRUCCIONANDO:
     {
@@ -44,46 +30,13 @@ void draw() {
   case MaquinaEstados.JUGANDO:
     {
       image(fondo, width/2, height/2, width, height);
-      area.display();
-      player.display();
-      spawnerEnemigoUno.colocarEnemigo();
-      spawnerEnemigoUno.eliminarEnemigo(area);
-      spawnerEnemigo.colocarEnemigo();
-      disparar.cosoo();
-      spawnerEnemigo.eliminarEnemigo();
-      tiempoRespawn(1000);
-      disparo(500);
-      disparar.proyectil();
-      enemigo2.display();
-      circle(mira.x, mira.y, 15);
-
+      jugando.mostrarJuego();
+      jugando.tiempoRespawn(1000);
+      jugando.disparo(500);
+      
       break;
     }
   }
-}
-public void disparo(int tiempoDisparo){
- if(millis()>=tiempoInicial2+tiempoDisparo && spawnerEnemigo.getSePuedeCrear() == true){
-    timeD++;
-    if(timeD==3){
-     disparar.EnemyShoot();
-      timeD=0;
-    }
-    tiempoInicial2=millis();
-  }
-}
-public void tiempoRespawn(int tiempoEspera){
-  if(millis()>=tiempoInicial+tiempoEspera && spawnerEnemigo.getSePuedeCrear() == true){
-    tiempo++;
-    if(tiempo==5){
-     spawnerEnemigo.crearEnemigo();
-      tiempo=0;
-    }
-    tiempoInicial=millis();
-  }
-}
-
-void mouseMoved() {
-  mira.set(mouseX, mouseY);
 }
 
 public void keyPressed() {
@@ -94,5 +47,5 @@ public void keyPressed() {
 }
 
 void mousePressed() {
-  disparar.playerShoot();
+  jugando.disparar.playerShoot();
 }

@@ -1,8 +1,8 @@
-class EnemigoUno extends GameObject {
+class Enemigo1 extends GameObject {
   private float timer;
   private int spawn;
 
-  public EnemigoUno() {
+  public Enemigo1() {
     this.imagen = loadImage("alien2.png");
     setPos(new PVector(0, height/3));
     setVel(height/30);

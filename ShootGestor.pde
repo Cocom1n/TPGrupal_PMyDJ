@@ -48,7 +48,7 @@ class ShootGestor extends GameObject{
        if ( Collider.manejarColisionE2(pescado,this) == true ) {
         BalasE.remove(i);
         println("golpeo jugador");
-      }else if(Collider.manejarColisionB2(disparar.balasJ,b)==true){
+      }else if(Collider.manejarColisionB2(jugando.disparar.balasJ,b)==true){
         BalasE.remove(i);
       }
     }
