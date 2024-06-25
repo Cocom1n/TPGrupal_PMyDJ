@@ -3,8 +3,6 @@ class SpawnerEnemigo extends GameObject{
   private ArrayList <Enemigo1> enemigos;
   private ArrayList <Enemigo3> enemigo3;
   private boolean sePuedeCrear;
-  private Pescado pescado;
-  private Gato gato;
   
   public SpawnerEnemigo(){
     enemigos =new ArrayList();
@@ -13,12 +11,10 @@ class SpawnerEnemigo extends GameObject{
     enemigo3 =new ArrayList();
     enemigo3.add(new Enemigo3(int(random(1,5))));
     
-    pescado = new Pescado();
     sePuedeCrear = false;
-    gato = new Gato();
   }
   
-  public void colocarEnemigo() {
+  public void colocarEnemigo(Gato gato) {
     if(enemigos.size() == 0 ){
       enemigos.add(new Enemigo1());
     }
@@ -27,6 +23,7 @@ class SpawnerEnemigo extends GameObject{
       enemigo.display();
       enemigo.move();
       if (Collider.colisionBlasEnemigo1(jugando.disparar.balasJ, enemigo)) {
+        gato.setPuntaje(gato.getPuntaje() + 10);
         enemigos.remove(i);
         println("~(x_x)~ enemigo1 se murio");
       }
@@ -37,17 +34,20 @@ class SpawnerEnemigo extends GameObject{
       enemy.display();
       enemy.actualizar();
       if (Collider.colisionBlasEnemigo3(jugando.disparar.balasJ, enemy)) {
+        gato.setPuntaje(gato.getPuntaje() + 30);
         enemigo3.remove(i);
         println("(=^+_+^=) Enemigo1 se murio");
         sePuedeCrear = true;
       }
     }
+    String score = nf(gato.getPuntaje(), 9);
+    text("Puntaje " + score, 60, 576); 
   }
   
-  public void eliminarEnemigo(){
+  public void eliminarEnemigo(Pescado area, Gato gato){
     for (int i = enemigo3.size() - 1; i >= 0; i--) {
       Enemigo3 enemy = enemigo3.get(i);
-      if(enemy.getX() > 11.5 && sePuedeCrear == false|| Collider.colisionAreaEnemigo3(pescado,this) == true && sePuedeCrear == false){
+      if(enemy.getX() > 11.5 && sePuedeCrear == false|| Collider.colisionAreaEnemigo3(area,this) == true && sePuedeCrear == false){
         gato.quitarVida();
         println(gato.getVida());
         enemigo3.remove(i);
@@ -55,6 +55,16 @@ class SpawnerEnemigo extends GameObject{
         sePuedeCrear = true;
       }
     }
+    
+    for (int i = enemigos.size() - 1; i >= 0; i--) {
+      Enemigo1 enemigo = enemigos.get(i);
+      if (Collider.colisionAreaEnemigo1(area, enemigo) == true) {
+        gato.quitarVida();
+        enemigos.remove(i);
+        println("(`w´)/ enemigoUno quito vida");
+      }
+    }
+    
     textSize(25);
     fill(0, 408, 612);
     text("Vida", 600, 576); 
@@ -66,16 +76,6 @@ class SpawnerEnemigo extends GameObject{
      println("Holi (=^._.^=)");
      sePuedeCrear = false;
    }
-   
-  public void eliminarEnemigo(Pescado area) {
-    for (int i = enemigos.size() - 1; i >= 0; i--) {
-      Enemigo1 enemigo = enemigos.get(i);
-      if (Collider.colisionAreaEnemigo1(area, enemigo) == true) {
-        enemigos.remove(i);
-        println("(`w´)/ enemigoUno quito vida");
-      }
-    }
-  }
   
   public boolean getSePuedeCrear() {
     return this.sePuedeCrear;

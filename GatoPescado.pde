@@ -7,6 +7,7 @@ private int tiempo;
 private long tiempoInicial2;
 private int timeD;
 private Nivel jugando;
+private Gato player;
 
 void setup() {
   size(800, 600);
@@ -15,6 +16,7 @@ void setup() {
   estado = MaquinaEstados.INSTRUCCIONANDO;
   spriteGestor= new SpriteGestor();
   jugando = new Nivel();
+  player = new Gato();
 }
 
 
@@ -29,7 +31,7 @@ void draw() {
   case MaquinaEstados.JUGANDO:
     {
       image(fondo, width/2, height/2, width, height);
-      jugando.mostrarJuego();
+      estado = jugando.mostrarJuego(player);
       jugando.tiempoRespawn(1000);
       jugando.disparo(500);
       break;
@@ -38,6 +40,12 @@ void draw() {
   case MaquinaEstados.FINAL:
     {
       spriteGestor.animate(new PVector(width/2,height/2),new PVector(800,600),"data/end.jpg");
+      String score = nf(player.getPuntaje(), 9);
+      textSize(30);
+      fill(0, 408, 612);
+      text("Maximo Puntaje", 20, height * .4); 
+      text(score, 50, height * .5);
+      text("Ánimo bro! (^0^)/", 20, height * .6); 
       break;
     }
   }

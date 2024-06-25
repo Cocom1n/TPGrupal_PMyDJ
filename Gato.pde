@@ -2,11 +2,13 @@ class Gato extends GameObject{
   
   private SpriteGestor spriteGestor= new SpriteGestor();
   private int vida;
+  private int puntaje;
   
   public Gato(){
     setPos(new PVector(width/2-10,height/2));
     setTam(new PVector(52,56));
     vida=3;
+    puntaje = 0;
   }
   
   public void display(){
@@ -29,5 +31,13 @@ class Gato extends GameObject{
   /** asigna la vida del jugador */
   public void setVida(int vida){
     this.vida=vida; 
+  }
+  
+  public void setPuntaje(int puntaje){
+    this.puntaje = puntaje;
+  }
+  
+  public int getPuntaje(){
+    return this.puntaje;
   }
 }
