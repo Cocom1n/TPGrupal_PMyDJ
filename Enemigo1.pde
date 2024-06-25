@@ -3,10 +3,9 @@ class Enemigo1 extends GameObject {
   private int spawn;
 
   public Enemigo1() {
-    this.imagen = loadImage("alien2.png");
     setPos(new PVector(0, height/3));
     setVel(height/30);
-    setTam(new PVector(50, 50));
+    setTam(new PVector(110,47));
     setDestruir(false);
     timer = 0.0;
     spawn = int(random(1,3));
@@ -16,7 +15,11 @@ class Enemigo1 extends GameObject {
   }
 
   public void display() {
-      image(imagen, this.posicion.x, this.posicion.y);
+    if(spawn == 1){
+      spriteGestor.animate(getPos(),getTam(),"data/enemigo1.png");
+    }else{
+      spriteGestor.animate(getPos(),getTam(),"data/enemigo1Flip.png");
+    }
   }
 
   public void move() {

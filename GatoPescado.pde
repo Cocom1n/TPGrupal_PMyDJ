@@ -19,21 +19,25 @@ void setup() {
 
 
 void draw() {
-
   switch(estado) {
   case MaquinaEstados.INSTRUCCIONANDO:
     {
       spriteGestor.animate(new PVector(width/2, height/2), new PVector(800, 600), "data/catfish.jpg");
       break;
     }
-    /* Muestra la pantalla para jugar */
+
   case MaquinaEstados.JUGANDO:
     {
       image(fondo, width/2, height/2, width, height);
       jugando.mostrarJuego();
       jugando.tiempoRespawn(1000);
       jugando.disparo(500);
-      
+      break;
+    }
+    
+  case MaquinaEstados.FINAL:
+    {
+      spriteGestor.animate(new PVector(width/2,height/2),new PVector(800,600),"data/end.jpg");
       break;
     }
   }

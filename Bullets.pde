@@ -4,14 +4,25 @@ class Bullets extends GameObject{
   
   public Bullets(PVector dire, PVector pos){
     setPos(pos);
-    this.imagen = loadImage("data/bullet.png");
-    setTam(new PVector(20,20));
+    setTam(new PVector(0,00));
     setVel(5);
     setDestruir(false);
     this.direccion = dire;
   }
   
-  public void display(){
+  public void display(int tipo){
+    switch(tipo){
+      case 1:{
+        this.imagen = loadImage("data/bullet.png");
+        setTam(new PVector(20,20));
+        break;
+      }
+      case 2:{
+        this.imagen = loadImage("data/bulletEnemy.png");
+        setTam(new PVector(30,30));
+        break;
+      }
+    }
     image(imagen, getPos().x, getPos().y, getTam().x, getTam().y);
   }
   

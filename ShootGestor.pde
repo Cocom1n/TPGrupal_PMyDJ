@@ -20,11 +20,11 @@ class ShootGestor extends GameObject{
     Bullets nuevabala = new Bullets(d, origen);
     balasJ.add(nuevabala);
   }
-  public void cosoo(){
+  public void spawnBalaJugador(){
      for (int i = balasJ.size()-1; i >= 0; i--) {
       Bullets b = balasJ.get(i);
       b.disparoPlayer();
-      b.display();
+      b.display(1);
       if (b.getDestruir()) {
         balasJ.remove(i);
       }
@@ -34,7 +34,6 @@ class ShootGestor extends GameObject{
   /* disparo enemigo*/
   
   public void EnemyShoot(){
-    
     direcc = new PVector(width/2-10,height/2);
     PVector d = PVector.sub(direcc,OrigenEnemy).normalize();
     Bullets nuevabala = new Bullets(d, OrigenEnemy);
@@ -44,11 +43,11 @@ class ShootGestor extends GameObject{
      for (int i = BalasE.size()-1; i >= 0; i--) {
       Bullets b = BalasE.get(i);
       b.disparoPlayer();
-      b.display();
-       if ( Collider.manejarColisionE2(pescado,this) == true ) {
+      b.display(2);
+       if ( Collider.colisionAreaEnemigo2(pescado,this) == true ) {
         BalasE.remove(i);
         println("golpeo jugador");
-      }else if(Collider.manejarColisionB2(jugando.disparar.balasJ,b)==true){
+      }else if(Collider.colisionEntreBalas(jugando.disparar.balasJ,b)==true){
         BalasE.remove(i);
       }
     }

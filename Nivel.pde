@@ -18,12 +18,13 @@ class Nivel{
     OrigenEnemy= new PVector(enemigo2.getPos().x, enemigo2.getPos().y);
     area.display();
     player.display();
+    enemigo2.display();
     spawnerEnemigo.colocarEnemigo();
-    disparar.cosoo();
+    disparar.spawnBalaJugador();
     spawnerEnemigo.eliminarEnemigo();
     spawnerEnemigo.eliminarEnemigo(area);
     disparar.proyectil();
-    enemigo2.display();
+    
   }
   
   public void disparo(int tiempoDisparo){

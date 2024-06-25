@@ -12,7 +12,7 @@ class Enemigo3 extends GameObject{
   public Enemigo3(int lugarAparicion){
     this.lugarAparicion=lugarAparicion;
     posicion = (new PVector(0,0));
-    tamanio = (new PVector(50,50));
+    tamanio = (new PVector(56,56));
     velocidad = 1;
     escala= 20;
     a = 0.2;
@@ -25,25 +25,23 @@ class Enemigo3 extends GameObject{
   }
   
   public void display(){
+    spriteGestor.animate(posicion,tamanio,"enemigo3.png");
+    
     if(lugarAparicion==1){
       y = a * sq(x) + b * x + c;
       posicion = (new PVector(width/4+50 + x * escala, height-50 - y * escala));
-      spriteGestor.animate(posicion,tamanio,"alien1.png");
     }
     if(lugarAparicion==2){
       y = a * sq(x) + b * x + c;
       posicion = (new PVector(width/2+150 - x * escala, height-50 - y * escala));
-      spriteGestor.animate(posicion,tamanio,"alien1.png");
     }
     if(lugarAparicion==3){
       y = a * -sq(x) + b * x + c;
       posicion = (new PVector(width/4+50 + x * escala, height/4-50 - y * escala));
-      spriteGestor.animate(posicion,tamanio,"alien1.png");
     }
     if(lugarAparicion==4){
       y = a * -sq(x) + b * x + c;
       posicion = (new PVector(width/2+150 - x * escala, height/4-50 - y * escala));
-      spriteGestor.animate(posicion,tamanio,"alien1.png");
     }
     
   }
@@ -52,24 +50,24 @@ class Enemigo3 extends GameObject{
     x += aumentoTiempo;
   }
   
-   public float getX() {
+   public float getX(){
     return this.x;
   }
-  public void setX(float x) {
+  public void setX(float x){
      this.x=x;
   }
-  
-  public float getY() {
+
+  public float getY(){
     return this.y;
   }
-  public void setY(float y) {
+  public void setY(float y){
      this.y=y;
   }
   
-  public int getEscala() {
+  public int getEscala(){
     return this.escala;
   }
-  public void setEscala(int escala) {
+  public void setEscala(int escala){
      this.escala=escala;
   }
 

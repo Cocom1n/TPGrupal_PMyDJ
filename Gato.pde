@@ -13,10 +13,6 @@ class Gato extends GameObject{
     spriteGestor.animate(getPos(),getTam(),"data/cat1.png");
   }
   
-  public void mira(){
-    
-  }
-  
   public void quitarVida(){
     vida=vida-1;
   }
