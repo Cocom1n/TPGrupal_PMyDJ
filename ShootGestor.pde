@@ -4,12 +4,14 @@ class ShootGestor extends GameObject{
   private ArrayList<Bullets> BalasE;
   private Pescado pescado;
   PVector origen, direcc;
+  private boolean PoweUp;
   
   public ShootGestor(){
     balasJ = new ArrayList<Bullets>();
     BalasE = new ArrayList<Bullets>();
     pescado = new Pescado();
     direcc = new PVector(0,0);
+    PoweUp=false;
   }
   
   public void playerShoot(){
@@ -24,7 +26,11 @@ class ShootGestor extends GameObject{
      for (int i = balasJ.size()-1; i >= 0; i--) {
       Bullets b = balasJ.get(i);
       b.disparoPlayer();
-      b.display(1);
+       if(PoweUp==false){
+         b.display(1);
+      }else{
+        b.display(3);
+      }
       if (b.getDestruir()) {
         balasJ.remove(i);
       }
@@ -51,5 +57,12 @@ class ShootGestor extends GameObject{
         BalasE.remove(i);
       }
     }
+  }
+/* metodos accesores de PowerUp */
+  public boolean getPowerUp() {
+    return this.PoweUp;
+  }
+  public void setPowerUp(boolean Activar) {
+     this.PoweUp=Activar;
   }
 }
