@@ -4,6 +4,7 @@ class Nivel{
   private ShootGestor disparar;
   private SpawnerEnemigo spawnerEnemigo;
   private Enemigo2 enemigo2;
+  private SpawnerPower powerup;
   
   public Nivel(){
     //player = new Gato();
@@ -12,6 +13,7 @@ class Nivel{
     area = new Pescado();
     disparar = new ShootGestor();
     spawnerEnemigo = new SpawnerEnemigo();
+    powerup= new SpawnerPower();
   }
   
   public int mostrarJuego(Gato player){
@@ -23,6 +25,8 @@ class Nivel{
     disparar.spawnBalaJugador();
     spawnerEnemigo.eliminarEnemigo(area, player);
     disparar.proyectil();
+    powerup.colocarPowerUp();
+    powerup.eliminarPowerUp();
 
     if(player.getVida() == 0){
       println("vidas " + player.getVida());
@@ -50,6 +54,30 @@ public void tiempoRespawn(int tiempoEspera){
       tiempo=0;
     }
     tiempoInicial=millis();
+  }
+}
+public void tiempoPower(int tiempoSpawn){
+  if(millis()>=tiempoInicial3+tiempoSpawn && powerup.getCrearPower() == true && powerup.getPowerOn() == false){
+    timeS++;
+    if(timeS==5){  
+     powerup.crearPowerUp();
+      timeS=0;
+    }
+    tiempoInicial3=millis();
+  }
+}
+public void tiempoPowerActive(int tiempoActivo){
+  if(powerup.getPowerOn() == true){
+    disparar.setPowerUp(true);
+  }
+  if(millis()>=tiempoInicial4+tiempoActivo && powerup.getPowerOn() == true){
+    timeActive++;
+    if(timeActive==5){
+      disparar.setPowerUp(false);
+      powerup.setPowerOn(false);
+      timeActive=0;
+    }
+    tiempoInicial4=millis();
   }
 }
 }
