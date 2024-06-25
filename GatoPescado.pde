@@ -9,7 +9,6 @@ private ShootGestor disparar;
 private SpawnerEnemigoUno spawnerEnemigoUno;
 private SpawnerEnemigo spawnerEnemigo;
 private EnemyShooter enemigo2;
-private Shooter EDisparo;
 private PVector OrigenEnemy;
 private long tiempoInicial;
 private int tiempo;
@@ -24,7 +23,6 @@ void setup() {
   player = new Gato();
   spawnerEnemigoUno = new SpawnerEnemigoUno();
   enemigo2= new EnemyShooter();
-  EDisparo= new Shooter();
   spriteGestor= new SpriteGestor();
   area = new Pescado();
   mira = new PVector(0, 0);
@@ -55,7 +53,7 @@ void draw() {
       spawnerEnemigo.eliminarEnemigo();
       tiempoRespawn(1000);
       disparo(500);
-      EDisparo.proyectil();
+      disparar.proyectil();
       enemigo2.display();
       circle(mira.x, mira.y, 15);
 
@@ -67,7 +65,7 @@ public void disparo(int tiempoDisparo){
  if(millis()>=tiempoInicial2+tiempoDisparo && spawnerEnemigo.getSePuedeCrear() == true){
     timeD++;
     if(timeD==3){
-     EDisparo.EnemyShoot();
+     disparar.EnemyShoot();
       timeD=0;
     }
     tiempoInicial2=millis();

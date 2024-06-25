@@ -18,7 +18,7 @@ class SpawnerEnemigo extends GameObject{
       Enemigo3 enemy = enemigo3.get(i);
       enemy.display();
       enemy.actualizar();
-      if (ColliderUno.manejarColision3(disparar.balasJ, enemy)) {
+      if (Collider.manejarColision3(disparar.balasJ, enemy)) {
         enemigo3.remove(i);
         println("Chau (=^+_+^=)");
         sePuedeCrear = true;
@@ -29,7 +29,7 @@ class SpawnerEnemigo extends GameObject{
    public void eliminarEnemigo(){
      for (int i = enemigo3.size() - 1; i >= 0; i--) {
        Enemigo3 enemy = enemigo3.get(i);
-       if(enemy.getX() > 11.5 && sePuedeCrear == false|| ColliderUno.manejarColisionE3(pescado,this) == true && sePuedeCrear == false){
+       if(enemy.getX() > 11.5 && sePuedeCrear == false|| Collider.manejarColisionE3(pescado,this) == true && sePuedeCrear == false){
          gato.quitarVida();
          println(gato.getVida());
          enemigo3.remove(i);

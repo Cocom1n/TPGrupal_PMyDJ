@@ -15,7 +15,7 @@ class SpawnerEnemigoUno extends GameObject {
       EnemigoUno enemigo = enemigos.get(i);
       enemigo.display();
       enemigo.move();
-      if (ColliderUno.manejarColision(disparar.balasJ, enemigo)) {
+      if (Collider.manejarColision(disparar.balasJ, enemigo)) {
         enemigos.remove(i);
         println("~(x_x)~ enemigoUno se murio");
       }
@@ -25,7 +25,7 @@ class SpawnerEnemigoUno extends GameObject {
   public void eliminarEnemigo(Pescado area) {
     for (int i = enemigos.size() - 1; i >= 0; i--) {
       EnemigoUno enemigo = enemigos.get(i);
-      if (ColliderUno.manejarColision(area, enemigo) == true) {
+      if (Collider.manejarColision(area, enemigo) == true) {
         enemigos.remove(i);
         println("(`w´)/ enemigoUno quito vida");
       }
