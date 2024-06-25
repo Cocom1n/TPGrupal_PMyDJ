@@ -6,6 +6,10 @@ private long tiempoInicial;
 private int tiempo;
 private long tiempoInicial2;
 private int timeD;
+private long tiempoInicial3;
+private int timeS;
+private long tiempoInicial4;
+private int timeActive;
 private Nivel jugando;
 private Gato player;
 
@@ -34,6 +38,8 @@ void draw() {
       estado = jugando.mostrarJuego(player);
       jugando.tiempoRespawn(1000);
       jugando.disparo(500);
+      jugando.tiempoPower(1000);
+      jugando.tiempoPowerActive(500);
       break;
     }
     
