@@ -22,6 +22,11 @@ class Bullets extends GameObject{
         setTam(new PVector(30,30));
         break;
       }
+      case 3:{
+        this.imagen = loadImage("data/bullet.png");
+        setTam(new PVector(60,60));
+        break;
+      }
     }
     image(imagen, getPos().x, getPos().y, getTam().x, getTam().y);
   }
