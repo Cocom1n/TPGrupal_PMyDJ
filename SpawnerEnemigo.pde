@@ -66,7 +66,6 @@ class SpawnerEnemigo extends GameObject{
     }
     
     textSize(25);
-    fill(0, 408, 612);
     text("Vida", 600, 576); 
     text(gato.getVida(), 675, 576);
   }

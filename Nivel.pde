@@ -1,13 +1,21 @@
 class Nivel{
-  //private Gato player;
+  private Gato player;
   private Pescado area;
   private ShootGestor disparar;
   private SpawnerEnemigo spawnerEnemigo;
   private Enemigo2 enemigo2;
   private SpawnerPower powerup;
+  private long tiempoInicial;
+  private int tiempo;
+  private long tiempoInicial2;
+  private int timeD;
+  private long tiempoInicial3;
+  private int timeS;
+  private long tiempoInicial4;
+  private int timeActive;
   
   public Nivel(){
-    //player = new Gato();
+    player = new Gato();
     enemigo2= new Enemigo2();
     //spriteGestor= new SpriteGestor();
     area = new Pescado();
@@ -16,7 +24,7 @@ class Nivel{
     powerup= new SpawnerPower();
   }
   
-  public int mostrarJuego(Gato player){
+  public int mostrarJuego(){
     OrigenEnemy= new PVector(enemigo2.getPos().x, enemigo2.getPos().y);
     area.display();
     player.display();
@@ -27,6 +35,11 @@ class Nivel{
     disparar.proyectil();
     powerup.colocarPowerUp();
     powerup.eliminarPowerUp();
+    
+    tiempoRespawn(1000);
+    disparo(500);
+    tiempoPower(1000);
+    tiempoPowerActive(500);
 
     if(player.getVida() == 0){
       println("vidas " + player.getVida());

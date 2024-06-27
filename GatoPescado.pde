@@ -2,16 +2,7 @@ private PImage fondo;
 private SpriteGestor spriteGestor;
 private int estado;
 private PVector OrigenEnemy;
-private long tiempoInicial;
-private int tiempo;
-private long tiempoInicial2;
-private int timeD;
-private long tiempoInicial3;
-private int timeS;
-private long tiempoInicial4;
-private int timeActive;
 private Nivel jugando;
-private Gato player;
 
 void setup() {
   size(800, 600);
@@ -20,11 +11,11 @@ void setup() {
   estado = MaquinaEstados.INSTRUCCIONANDO;
   spriteGestor= new SpriteGestor();
   jugando = new Nivel();
-  player = new Gato();
 }
 
 
 void draw() {
+  fill(230, 113, 164);
   switch(estado) {
   case MaquinaEstados.INSTRUCCIONANDO:
     {
@@ -35,20 +26,15 @@ void draw() {
   case MaquinaEstados.JUGANDO:
     {
       image(fondo, width/2, height/2, width, height);
-      estado = jugando.mostrarJuego(player);
-      jugando.tiempoRespawn(1000);
-      jugando.disparo(500);
-      jugando.tiempoPower(1000);
-      jugando.tiempoPowerActive(500);
+      estado = jugando.mostrarJuego();
       break;
     }
     
   case MaquinaEstados.FINAL:
     {
       spriteGestor.animate(new PVector(width/2,height/2),new PVector(800,600),"data/end.jpg");
-      String score = nf(player.getPuntaje(), 9);
+      String score = nf(jugando.player.getPuntaje(), 9);
       textSize(30);
-      fill(0, 408, 612);
       text("Maximo Puntaje", 20, height * .4); 
       text(score, 50, height * .5);
       text("Ánimo bro! (^0^)/", 20, height * .6); 
@@ -61,6 +47,9 @@ public void keyPressed() {
 
   if (keyCode == SHIFT && (estado == MaquinaEstados.INSTRUCCIONANDO)){
     estado = MaquinaEstados.JUGANDO;
+  }
+  if (keyCode == SHIFT && (estado == MaquinaEstados.FINAL)){
+    estado = MaquinaEstados.INSTRUCCIONANDO;
   }
 }
 

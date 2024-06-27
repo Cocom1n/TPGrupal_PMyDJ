@@ -37,6 +37,5 @@ class SpriteGestor extends GameObject {
        this.nextxFrameFloat=tam.x;
        }
      }
-    
   }
 }

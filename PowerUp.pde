@@ -2,14 +2,14 @@ class PowerUp extends GameObject{
 
  
     public PowerUp(){
-    this.imagen = loadImage("data/enemigo2.png");
-    setPos(new PVector(width/5+100,100 ));
-    setTam(new PVector(48,53));
+    this.imagen = loadImage("data/powerUp.png");
+    setPos(new PVector(random(100,500),random(100,700) ));
+    setTam(new PVector(50,50));
     
   }
   
   public void display(){
-    circle(getPos().x, getPos().y,25);
+    image(imagen,getPos().x, getPos().y);
     move();
   }
   
