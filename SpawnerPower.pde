@@ -3,7 +3,6 @@ class SpawnerPower extends GameObject{
   private ArrayList <PowerUp> powerup;
   private boolean CrearPower;
   private boolean PowerOn;
-  private Bullets bala;
   
    public SpawnerPower(){
     powerup =new ArrayList();

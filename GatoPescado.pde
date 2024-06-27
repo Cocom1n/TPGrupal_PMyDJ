@@ -20,6 +20,7 @@ void draw() {
   case MaquinaEstados.INSTRUCCIONANDO:
     {
       spriteGestor.animate(new PVector(width/2, height/2), new PVector(800, 600), "data/catfish.jpg");
+      jugando.player.reset();
       break;
     }
 

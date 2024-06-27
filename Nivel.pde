@@ -17,7 +17,6 @@ class Nivel{
   public Nivel(){
     player = new Gato();
     enemigo2= new Enemigo2();
-    //spriteGestor= new SpriteGestor();
     area = new Pescado();
     disparar = new ShootGestor();
     spawnerEnemigo = new SpawnerEnemigo();
