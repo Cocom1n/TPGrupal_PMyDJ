@@ -2,23 +2,22 @@ class ShootGestor extends GameObject{
   
   private ArrayList<Bullets> balasJ;
   private ArrayList<Bullets> BalasE;
-  private Pescado pescado;
+  private ArrayList<Bullets> BalasPu;
   PVector origen, direcc;
   private boolean PoweUp;
   
   public ShootGestor(){
     balasJ = new ArrayList<Bullets>();
     BalasE = new ArrayList<Bullets>();
-    pescado = new Pescado();
+    BalasPu = new ArrayList<Bullets>();
     direcc = new PVector(0,0);
     PoweUp=false;
   }
   
   public void playerShoot(){
-    origen = new PVector(width/2-10,height/2);
+    origen = new PVector(jugando.player.getPos().x,jugando.player.getPos().y);
     direcc = new PVector(mouseX,mouseY);
-    PVector d = PVector.sub(direcc,origen).normalize();
-    //println(d);
+    PVector d = PVector.sub(direcc,origen).normalize(); //calcula la direccion normalizada para el disparo
     Bullets nuevabala = new Bullets(d, origen);
     balasJ.add(nuevabala);
   }
@@ -26,13 +25,20 @@ class ShootGestor extends GameObject{
      for (int i = balasJ.size()-1; i >= 0; i--) {
       Bullets b = balasJ.get(i);
       b.disparoPlayer();
-       if(PoweUp==false){
-         b.display(1);
-      }else{
-        b.display(3);
-      }
+      b.display(1);
       if (b.getDestruir()) {
         balasJ.remove(i);
+      }
+    }
+  }
+  
+  public void spawnBalaPu(){
+     for (int i = BalasPu.size()-1; i >= 0; i--) {
+      Bullets b = BalasPu.get(i);
+      b.disparoPlayer();
+      b.display(3);
+      if (b.getDestruir()) {
+        BalasPu.remove(i);
       }
     }
   }
@@ -40,8 +46,7 @@ class ShootGestor extends GameObject{
   /* disparo enemigo*/
   
   public void EnemyShoot(){
-    direcc = new PVector(width/2-10,height/2);
-    PVector d = PVector.sub(direcc,OrigenEnemy).normalize();
+    PVector d = PVector.sub(jugando.player.getPos(),OrigenEnemy).normalize();
     Bullets nuevabala = new Bullets(d, OrigenEnemy);
     BalasE.add(nuevabala);
   }
@@ -50,7 +55,7 @@ class ShootGestor extends GameObject{
       Bullets b = BalasE.get(i);
       b.disparoPlayer();
       b.display(2);
-       if ( Collider.colisionAreaEnemigo2(pescado,this) == true ) {
+       if ( Collider.colisionAreaEnemigo2(jugando.player,this) == true ) {
         BalasE.remove(i);
         println("golpeo jugador");
       }else if(Collider.colisionEntreBalas(jugando.disparar.balasJ,b)==true){

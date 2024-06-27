@@ -1,6 +1,5 @@
 class Nivel{
   private Gato player;
-  private Pescado area;
   private ShootGestor disparar;
   private SpawnerEnemigo spawnerEnemigo;
   private Enemigo2 enemigo2;
@@ -17,7 +16,6 @@ class Nivel{
   public Nivel(){
     player = new Gato();
     enemigo2= new Enemigo2();
-    area = new Pescado();
     disparar = new ShootGestor();
     spawnerEnemigo = new SpawnerEnemigo();
     powerup= new SpawnerPower();
@@ -25,12 +23,12 @@ class Nivel{
   
   public int mostrarJuego(){
     OrigenEnemy= new PVector(enemigo2.getPos().x, enemigo2.getPos().y);
-    area.display();
     player.display();
+    player.mover();
     enemigo2.display();
     spawnerEnemigo.colocarEnemigo(player);
     disparar.spawnBalaJugador();
-    spawnerEnemigo.eliminarEnemigo(area, player);
+    spawnerEnemigo.eliminarEnemigo(player);
     disparar.proyectil();
     powerup.colocarPowerUp();
     powerup.eliminarPowerUp();

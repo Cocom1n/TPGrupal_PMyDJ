@@ -44,10 +44,10 @@ class SpawnerEnemigo extends GameObject{
     text(score, 155, 570); 
   }
   
-  public void eliminarEnemigo(Pescado area, Gato gato){
+  public void eliminarEnemigo(Gato gato){
     for (int i = enemigo3.size() - 1; i >= 0; i--) {
       Enemigo3 enemy = enemigo3.get(i);
-      if(enemy.getX() > 11.5 && sePuedeCrear == false|| Collider.colisionAreaEnemigo3(area,this) == true && sePuedeCrear == false){
+      if(enemy.getX() > 11.5 && sePuedeCrear == false|| Collider.colisionAreaEnemigo3(gato,this) == true && sePuedeCrear == false){
         gato.quitarVida();
         println(gato.getVida());
         enemigo3.remove(i);
@@ -58,7 +58,7 @@ class SpawnerEnemigo extends GameObject{
     
     for (int i = enemigos.size() - 1; i >= 0; i--) {
       Enemigo1 enemigo = enemigos.get(i);
-      if (Collider.colisionAreaEnemigo1(area, enemigo) == true) {
+      if (Collider.colisionAreaEnemigo1(jugando.player, enemigo) == true) {
         gato.quitarVida();
         enemigos.remove(i);
         println("(`w´)/ enemigoUno quito vida");

@@ -10,11 +10,6 @@ class PowerUp extends GameObject{
   
   public void display(){
     image(imagen,getPos().x, getPos().y);
-    move();
   }
   
-  public void move(){
-   
-  }
-
 }

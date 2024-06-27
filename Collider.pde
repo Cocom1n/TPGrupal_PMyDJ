@@ -11,7 +11,7 @@ static class Collider{
     }
     return false;
   }
-  public static boolean colisionAreaEnemigo1(Pescado a, Enemigo1 b) {
+  public static boolean colisionAreaEnemigo1(Gato a, Enemigo1 b) {
     if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
       return true;
     }
@@ -19,7 +19,7 @@ static class Collider{
   }
   
     /*colisiones enemigo 2*/
-  public static boolean colisionAreaEnemigo2(Pescado a, ShootGestor b) {
+  public static boolean colisionAreaEnemigo2(Gato a, ShootGestor b) {
     for(int i=0; i<b.BalasE.size();i++){
       if (dist(a.posicion.x, a.posicion.y, b.BalasE.get(i).getPos().x, b.BalasE.get(i).getPos().y) < (a.tamanio.x / 2 + b.BalasE.get(i).getTam().x / 2)) {
         println("dame pescado");
@@ -52,7 +52,7 @@ static class Collider{
     return false;
   }
   
-  public static boolean colisionAreaEnemigo3(Pescado a, SpawnerEnemigo b) {
+  public static boolean colisionAreaEnemigo3(Gato a, SpawnerEnemigo b) {
     for(int i=0; i<b.enemigo3.size();i++){
       if (dist(a.posicion.x, a.posicion.y, b.enemigo3.get(i).getPos().x, b.enemigo3.get(i).getPos().y) < (a.tamanio.x / 2 + b.enemigo3.get(i).getTam().x / 2)) { 
         println("dame pescado");
@@ -62,10 +62,18 @@ static class Collider{
     return false;
   }
  /*Colisiones PowerUp*/
-     public static boolean colisionBlasPowerUp(ArrayList<Bullets> list, PowerUp b) {
-    for (int i = 0; i < list.size(); i++) {
-      Bullets a = list.get(i);
-      if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
+ //public static boolean colisionGatoPowerUp(Gato a, PowerUp b){
+ //  if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
+ //     return true;
+ //   }
+ //   return false;
+   
+ //}
+ 
+ public static boolean colisionBlasPowerUp(ArrayList<Bullets> list, PowerUp b) {
+   for (int i = 0; i < list.size(); i++) {
+     Bullets a = list.get(i);
+     if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
         list.remove(a);  // Eliminar la bala de la lista
         return true;  // Colisión detectada
       }

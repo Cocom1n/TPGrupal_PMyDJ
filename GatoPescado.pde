@@ -4,7 +4,7 @@ private int estado;
 private PVector OrigenEnemy;
 private Nivel jugando;
 
-void setup() {
+void setup(){
   size(800, 600);
   imageMode(CENTER);
   this.fondo = loadImage("data/fondo.png");
@@ -15,7 +15,7 @@ void setup() {
 }
 
 
-void draw() {
+void draw(){
   fill(230, 113, 164);
   switch(estado) {
   case MaquinaEstados.INSTRUCCIONANDO:
@@ -46,7 +46,7 @@ void draw() {
   }
 }
 
-public void keyPressed() {
+public void keyPressed(){
 
   if (keyCode == SHIFT && (estado == MaquinaEstados.INSTRUCCIONANDO)){
     estado = MaquinaEstados.JUGANDO;
@@ -54,8 +54,36 @@ public void keyPressed() {
   if (keyCode == SHIFT && (estado == MaquinaEstados.FINAL)){
     estado = MaquinaEstados.INSTRUCCIONANDO;
   }
+  
+  if (key == 'w' || key == 'W') {
+    jugando.player.arriba = true;
+  }
+  if (key == 's' || key == 'S') {
+    jugando.player.abajo = true;
+  }
+  if (key == 'a' || key == 'A') {
+    jugando.player.izqierda = true;
+  }
+  if (key == 'd' || key == 'D') {
+    jugando.player.derecha = true;
+  }
 }
 
-void mousePressed() {
+void mousePressed(){
   jugando.disparar.playerShoot();
+}
+
+void keyReleased(){
+  if (key == 'w' || key == 'W') {
+    jugando.player.arriba = false;
+  }
+  if (key == 's' || key == 'S') {
+    jugando.player.abajo = false;
+  }
+  if (key == 'a' || key == 'A') {
+    jugando.player.izqierda = false;
+  }
+  if (key == 'd' || key == 'D') {
+    jugando.player.derecha = false;
+  }
 }

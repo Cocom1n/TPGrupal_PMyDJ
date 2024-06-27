@@ -3,10 +3,12 @@ class Gato extends GameObject{
   private SpriteGestor spriteGestor= new SpriteGestor();
   private int vida;
   private int puntaje;
+  private boolean arriba,abajo, izqierda, derecha;
   
   public Gato(){
     setPos(new PVector(width/2-10,height/2));
     setTam(new PVector(52,56));
+    setVel(5);
     this.imagen = loadImage("data/mira.png");
     vida=3;
     puntaje = 0;
@@ -15,6 +17,21 @@ class Gato extends GameObject{
   public void display(){
     spriteGestor.animate(getPos(),getTam(),"data/cat1.png");
     image(imagen,mouseX,mouseY);
+  }
+  
+  public void mover(){
+    if (arriba) {
+      getPos().y -= getVel();
+    }
+    if (abajo) {
+      getPos().y += getVel();
+    }
+    if (izqierda) {
+      getPos().x -= getVel();
+    }
+    if (derecha) {
+      getPos().x += getVel();
+    }
   }
   
   public void quitarVida(){
