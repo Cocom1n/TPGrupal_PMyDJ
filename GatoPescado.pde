@@ -70,7 +70,11 @@ public void keyPressed(){
 }
 
 void mousePressed(){
-  jugando.disparar.playerShoot();
+  if(jugando.disparar.getPowerUp()){
+      jugando.disparar.playerShootPu();
+    }else{
+      jugando.disparar.playerShoot();
+    }  
 }
 
 void keyReleased(){

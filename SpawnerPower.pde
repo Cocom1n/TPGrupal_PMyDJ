@@ -3,12 +3,11 @@ class SpawnerPower extends GameObject{
   private boolean CrearPower;
   private boolean PowerOn;
   
-   public SpawnerPower(){
+  public SpawnerPower(){
     powerup =new ArrayList();
     powerup.add(new PowerUp());
     CrearPower = false;
     PowerOn=false;
-    
   }
   
   public void colocarPowerUp() {
@@ -20,7 +19,7 @@ class SpawnerPower extends GameObject{
   }
   
   public void eliminarPowerUp(){
-     for (int i = powerup.size() - 1; i >= 0; i--) {
+    for (int i = powerup.size() - 1; i >= 0; i--) {
       PowerUp power = powerup.get(i);
       if (Collider.colisionGatoPowerUp(jugando.player,power)){
         PowerOn=true;
@@ -36,10 +35,10 @@ class SpawnerPower extends GameObject{
      }
    }
    public void crearPowerUp(){
-      powerup.add(new PowerUp());
-          println("Aparecio un PowerUp (=^._.^=)");
-          CrearPower = false;
-        }
+     powerup.add(new PowerUp());
+     println("Aparecio un PowerUp (=^._.^=)");
+     CrearPower = false;
+   }
         
     public boolean getCrearPower() {
     return this.CrearPower;

@@ -62,22 +62,22 @@ static class Collider{
     return false;
   }
  /*Colisiones PowerUp*/
- //public static boolean colisionGatoPowerUp(Gato a, PowerUp b){
- //  if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
- //     return true;
- //   }
- //   return false;
-   
- //}
- 
- public static boolean colisionBlasPowerUp(ArrayList<Bullets> list, PowerUp b) {
-   for (int i = 0; i < list.size(); i++) {
-     Bullets a = list.get(i);
-     if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
-        list.remove(a);  // Eliminar la bala de la lista
-        return true;  // Colisión detectada
-      }
+ public static boolean colisionGatoPowerUp(Gato a, PowerUp b){
+   if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
+      return true;
     }
     return false;
-  }
+   
+ }
+ 
+ //public static boolean colisionBlasPowerUp(ArrayList<Bullets> list, PowerUp b) {
+ //  for (int i = 0; i < list.size(); i++) {
+ //    Bullets a = list.get(i);
+ //    if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
+ //       list.remove(a);  // Eliminar la bala de la lista
+ //       return true;  // Colisión detectada
+ //     }
+ //   }
+ //   return false;
+ // }
 }

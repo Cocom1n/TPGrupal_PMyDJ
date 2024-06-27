@@ -41,6 +41,7 @@ class Gato extends GameObject{
   public void reset(){
     puntaje = 0;
     vida=3;
+    setPos(new PVector(width/2-10,height/2));
   }
   //------ Metodos Accesores -----// 
   

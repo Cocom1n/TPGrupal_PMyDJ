@@ -27,6 +27,7 @@ class Nivel{
     player.mover();
     enemigo2.display();
     spawnerEnemigo.colocarEnemigo(player);
+    disparar.spawnBalaPu();
     disparar.spawnBalaJugador();
     spawnerEnemigo.eliminarEnemigo(player);
     disparar.proyectil();

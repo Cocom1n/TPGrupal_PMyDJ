@@ -32,6 +32,14 @@ class ShootGestor extends GameObject{
     }
   }
   
+  public void playerShootPu(){
+    origen = new PVector(jugando.player.getPos().x,jugando.player.getPos().y);
+    direcc = new PVector(mouseX,mouseY);
+    PVector d = PVector.sub(direcc,origen).normalize(); //calcula la direccion normalizada para el disparo
+    Bullets nuevabala = new Bullets(d, origen);
+    BalasPu.add(nuevabala);
+  }
+  
   public void spawnBalaPu(){
      for (int i = BalasPu.size()-1; i >= 0; i--) {
       Bullets b = BalasPu.get(i);
@@ -55,10 +63,15 @@ class ShootGestor extends GameObject{
       Bullets b = BalasE.get(i);
       b.disparoPlayer();
       b.display(2);
-       if ( Collider.colisionAreaEnemigo2(jugando.player,this) == true ) {
+      if ( Collider.colisionAreaEnemigo2(jugando.player,this) == true ) {
         BalasE.remove(i);
+        jugando.player.quitarVida();
         println("golpeo jugador");
-      }else if(Collider.colisionEntreBalas(jugando.disparar.balasJ,b)==true){
+      }
+      if(Collider.colisionEntreBalas(jugando.disparar.balasJ,b)==true){
+        BalasE.remove(i);
+      }
+      if(Collider.colisionEntreBalas(jugando.disparar.BalasPu,b)==true){
         BalasE.remove(i);
       }
     }
