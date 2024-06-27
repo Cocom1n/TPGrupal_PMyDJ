@@ -1,4 +1,4 @@
-private PImage fondo;
+private PImage fondo, hud;
 private SpriteGestor spriteGestor;
 private int estado;
 private PVector OrigenEnemy;
@@ -8,6 +8,7 @@ void setup() {
   size(800, 600);
   imageMode(CENTER);
   this.fondo = loadImage("data/fondo.png");
+  this.hud = loadImage("data/hud.png");
   estado = MaquinaEstados.INSTRUCCIONANDO;
   spriteGestor= new SpriteGestor();
   jugando = new Nivel();
@@ -27,6 +28,7 @@ void draw() {
   case MaquinaEstados.JUGANDO:
     {
       image(fondo, width/2, height/2, width, height);
+      image(hud, width/2, height/2, width, height);
       estado = jugando.mostrarJuego();
       break;
     }

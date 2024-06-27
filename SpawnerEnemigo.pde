@@ -41,9 +41,7 @@ class SpawnerEnemigo extends GameObject{
       }
     }
     String score = nf(gato.getPuntaje(), 9);
-    PImage puntos= loadImage("data/puntos.png");
-    image(puntos,100, 570);
-    text(score, 150, 576); 
+    text(score, 155, 570); 
   }
   
   public void eliminarEnemigo(Pescado area, Gato gato){
@@ -68,8 +66,6 @@ class SpawnerEnemigo extends GameObject{
     }
     
     textSize(25);
-    PImage pez= loadImage("data/peez.png");
-    image(pez,610, 570);
     text(gato.getVida(), 675, 576);
   }
    

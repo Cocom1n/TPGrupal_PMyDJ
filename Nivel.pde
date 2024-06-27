@@ -38,7 +38,7 @@ class Nivel{
     tiempoRespawn(1000);
     disparo(500);
     tiempoPower(1000);
-    tiempoPowerActive(500);
+    tiempoPowerActive(1000);
 
     if(player.getVida() == 0){
       println("vidas " + player.getVida());
