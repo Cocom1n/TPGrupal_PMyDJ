@@ -23,8 +23,8 @@ class Bullets extends GameObject{
         break;
       }
       case 3:{
-        this.imagen = loadImage("data/bullet.png");
-        setTam(new PVector(60,60));
+        this.imagen = loadImage("data/powerBullet.png");
+        setTam(new PVector(40,40));
         break;
       }
     }

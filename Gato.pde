@@ -7,12 +7,14 @@ class Gato extends GameObject{
   public Gato(){
     setPos(new PVector(width/2-10,height/2));
     setTam(new PVector(52,56));
+    this.imagen = loadImage("data/mira.png");
     vida=3;
     puntaje = 0;
   }
   
   public void display(){
     spriteGestor.animate(getPos(),getTam(),"data/cat1.png");
+    image(imagen,mouseX,mouseY);
   }
   
   public void quitarVida(){
