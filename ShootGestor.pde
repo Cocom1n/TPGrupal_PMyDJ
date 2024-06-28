@@ -63,6 +63,11 @@ class ShootGestor extends GameObject{
       Bullets b = BalasE.get(i);
       b.disparoPlayer();
       b.display(2);
+      
+      if (b.getPos().x >= width-50 || b.getPos().x<=0 || b.getPos().y >= height  || b.getPos().y<=0 ){
+        println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+        BalasE.remove(i);
+      }
       if ( Collider.colisionAreaEnemigo2(jugando.player,this) == true ) {
         BalasE.remove(i);
         jugando.player.quitarVida();

@@ -43,7 +43,7 @@ class Enemigo3 extends GameObject{
       y = a * -sq(x) + b * x + c;
       posicion = (new PVector(width/2+150 - x * escala, height/4-50 - y * escala));
     }
-    x += aumentoTiempo * Time.getDeltaTime(frameRate);
+    x += velocidad * Time.getDeltaTime(frameRate);
   }
   
   //void actualizar(){

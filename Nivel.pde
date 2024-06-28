@@ -35,7 +35,7 @@ class Nivel{
     powerup.eliminarPowerUp();
     
     tiempoRespawn(1000);
-    disparo(500);
+    disparo(1000);
     tiempoPower(1000);
     tiempoPowerActive(1000);
 
@@ -49,14 +49,14 @@ class Nivel{
   public void disparo(int tiempoDisparo){
    if(millis()>=tiempoInicial2+tiempoDisparo && spawnerEnemigo.getSePuedeCrear() == true){
       timeD++;
-      if(timeD==3){
+      if(timeD==5){
         disparar.EnemyShoot();
         timeD=0;
       }
       tiempoInicial2=millis();
     }
   }
-
+/*enemigo3*/
 public void tiempoRespawn(int tiempoEspera){
   if(millis()>=tiempoInicial+tiempoEspera && spawnerEnemigo.getSePuedeCrear() == true){
     tiempo++;
@@ -67,6 +67,8 @@ public void tiempoRespawn(int tiempoEspera){
     tiempoInicial=millis();
   }
 }
+
+/*tiempo enemigo 1*/
 public void tiempoPower(int tiempoSpawn){
   if(millis()>=tiempoInicial3+tiempoSpawn && powerup.getCrearPower() == true && powerup.getPowerOn() == false){
     timeS++;
@@ -77,6 +79,8 @@ public void tiempoPower(int tiempoSpawn){
     tiempoInicial3=millis();
   }
 }
+
+/*powerup*/
 public void tiempoPowerActive(int tiempoActivo){
   if(powerup.getPowerOn() == true){
     disparar.setPowerUp(true);

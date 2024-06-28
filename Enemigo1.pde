@@ -32,4 +32,8 @@ class Enemigo1 extends GameObject {
       this.posicion.y += (2.5 * sin(timer));
     }
   }
+  
+  public int getSpawn(){
+    return this.spawn;
+  }
 }

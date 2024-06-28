@@ -1,16 +1,29 @@
 static class Collider{
   
   /* Colisiones enemigo 1*/
-  public static boolean colisionBlasEnemigo1(ArrayList<Bullets> list, Enemigo1 b) {
+  public static boolean colisionBlasEnemigo1(ArrayList<Bullets> list, Enemigo1 enemig) {
+    ArrayList<Bullets> sorteador = new ArrayList<Bullets>(list);
+    sorteador.sort((a1,a2) -> Float.compare(a1.posicion.x,a2.posicion.x));
     for (int i = 0; i < list.size(); i++) {
       Bullets a = list.get(i);
-      if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
-        list.remove(a);
-        return true;
+      Enemigo1 b = enemig;
+      if(enemig.getSpawn() == 1){
+        if(a.posicion.x < b.posicion.x)break;
+        if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
+          list.remove(a);
+          return true;
+        }
+      }else{
+        if(a.posicion.x > b.posicion.x)break;
+        if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
+          list.remove(a);
+          return true;
+        }
       }
     }
     return false;
   }
+  
   public static boolean colisionAreaEnemigo1(Gato a, Enemigo1 b) {
     if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
       return true;
@@ -67,17 +80,5 @@ static class Collider{
       return true;
     }
     return false;
-   
  }
- 
- //public static boolean colisionBlasPowerUp(ArrayList<Bullets> list, PowerUp b) {
- //  for (int i = 0; i < list.size(); i++) {
- //    Bullets a = list.get(i);
- //    if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
- //       list.remove(a);  // Eliminar la bala de la lista
- //       return true;  // Colisión detectada
- //     }
- //   }
- //   return false;
- // }
 }
