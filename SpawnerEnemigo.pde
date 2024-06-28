@@ -34,7 +34,7 @@ class SpawnerEnemigo extends GameObject{
     for (int i = enemigo3.size() - 1; i >= 0; i--) {
       Enemigo3 enemy = enemigo3.get(i);
       enemy.display();
-      enemy.actualizar();
+      enemy.move();
       if (Collider.colisionBlasEnemigo3(jugando.disparar.balasJ, enemy)||Collider.colisionBlasEnemigo3(jugando.disparar.BalasPu, enemy)) {
         gato.setPuntaje(gato.getPuntaje() + 30);
         enemigo3.remove(i);

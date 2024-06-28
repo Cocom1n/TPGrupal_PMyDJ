@@ -13,20 +13,20 @@ class Enemigo3 extends GameObject{
     this.lugarAparicion=lugarAparicion;
     posicion = (new PVector(0,0));
     tamanio = (new PVector(56,56));
-    velocidad = 1;
     escala= 20;
     a = 0.2;
     b = 0;
     c = 0;
     x = -11.5;
-    aumentoTiempo = 0.09;
+    velocidad = 3;
     y =0;
-    setDestruir(false);
   }
   
   public void display(){
     spriteGestor.animate(posicion,tamanio,"enemigo3.png");
-    
+  }
+  
+  void move(){
     if(lugarAparicion==1){
       y = a * sq(x) + b * x + c;
       posicion = (new PVector(width/4+50 + x * escala, height-50 - y * escala));
@@ -43,12 +43,12 @@ class Enemigo3 extends GameObject{
       y = a * -sq(x) + b * x + c;
       posicion = (new PVector(width/2+150 - x * escala, height/4-50 - y * escala));
     }
-    
+    x += aumentoTiempo * Time.getDeltaTime(frameRate);
   }
   
-  void actualizar(){
-    x += aumentoTiempo;
-  }
+  //void actualizar(){
+  //  x += aumentoTiempo;
+  //}
   
    public float getX(){
     return this.x;
