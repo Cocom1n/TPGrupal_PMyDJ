@@ -4,8 +4,8 @@ static class Collider{
   public static boolean colisionBlasEnemigo1(ArrayList<Bullets> list, Enemigo1 enemig) {
     ArrayList<Bullets> sorteador = new ArrayList<Bullets>(list);
     sorteador.sort((a1,a2) -> Float.compare(a1.posicion.x,a2.posicion.x));
-    for (int i = 0; i < list.size(); i++) {
-      Bullets a = list.get(i);
+    for (int i = 0; i < sorteador.size(); i++) {
+      Bullets a = sorteador.get(i);
       Enemigo1 b = enemig;
       if(enemig.getSpawn() == 1){
         if(a.posicion.x < b.posicion.x)break;
@@ -33,8 +33,12 @@ static class Collider{
   
     /*colisiones enemigo 2*/
   public static boolean colisionAreaEnemigo2(Gato a, ShootGestor b) {
-    for(int i=0; i<b.BalasE.size();i++){
-      if (dist(a.posicion.x, a.posicion.y, b.BalasE.get(i).getPos().x, b.BalasE.get(i).getPos().y) < (a.tamanio.x / 2 + b.BalasE.get(i).getTam().x / 2)) {
+    ArrayList<Bullets> sorteador = new ArrayList<Bullets>(b.BalasE);
+    sorteador.sort((a1,a2) -> Float.compare(a1.posicion.x,a2.posicion.x));
+    for(int i=0; i< sorteador.size();i++){
+      Bullets bala = sorteador.get(i);
+      if(a.posicion.y < bala.posicion.y)break;
+      if (dist(a.posicion.x, a.posicion.y, bala.getPos().x, bala.getPos().y) < (a.tamanio.x / 2 + bala.getTam().x / 2)) {
         println("dame pescado");
         return true;
       }
@@ -43,8 +47,11 @@ static class Collider{
   }
   
   public static boolean colisionEntreBalas(ArrayList<Bullets> list2, Bullets b) {
-    for (int i = 0; i < list2.size(); i++) {
-      Bullets a = list2.get(i);
+    ArrayList<Bullets> sorteador = new ArrayList<Bullets>(list2);
+    sorteador.sort((a1,a2) -> Float.compare(a1.posicion.x,a2.posicion.x));
+    for (int i = 0; i < sorteador.size(); i++) {
+      Bullets a = sorteador.get(i);
+      if(a.posicion.y < b.posicion.y)break;
       if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
         list2.remove(a);  // Eliminar la bala de la lista
         return true;  // Colisión detectada
