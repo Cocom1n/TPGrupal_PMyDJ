@@ -4,7 +4,7 @@ class Enemigo1 extends GameObject {
 
   public Enemigo1() {
     setPos(new PVector(0, height/3));
-    setVel(height/30);
+    setVel(height/10);
     setTam(new PVector(110,47));
     setDestruir(false);
     timer = 0.0;
@@ -27,9 +27,15 @@ class Enemigo1 extends GameObject {
     if (spawn == 1) {
       this.posicion.x += this.velocidad * Time.getDeltaTime(frameRate);
       this.posicion.y += (2.5 * sin(timer));
+      if(this.posicion.x >= width+50){
+      this.setDestruir(true);
+    }
     } else {
       this.posicion.x -= this.velocidad * Time.getDeltaTime(frameRate);
       this.posicion.y += (2.5 * sin(timer));
+      if(this.posicion.x <= -50){
+        this.setDestruir(true);
+      }
     }
   }
   

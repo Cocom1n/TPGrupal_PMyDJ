@@ -29,6 +29,9 @@ class SpawnerEnemigo extends GameObject{
         enemigos.remove(i);
         println("~(x_x)~ enemigo1 se murio");
       }
+      if(enemigo.getDestruir()){
+        enemigos.remove(i);
+      }
     }
     /* SPAWN ENEMIGO 3 */
     for (int i = enemigo3.size() - 1; i >= 0; i--) {
