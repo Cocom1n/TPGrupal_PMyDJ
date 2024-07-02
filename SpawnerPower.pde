@@ -1,30 +1,30 @@
 class SpawnerPower extends GameObject{
-  private ArrayList <PowerUp> powerup;
-  private boolean CrearPower;
-  private boolean PowerOn;
+  private ArrayList <PowerUp> powerUp;
+  private boolean crearPower;
+  private boolean powerOn;
   
   public SpawnerPower(){
-    powerup =new ArrayList();
-    powerup.add(new PowerUp());
-    CrearPower = false;
-    PowerOn=false;
+    powerUp =new ArrayList();
+    powerUp.add(new PowerUp());
+    crearPower = false;
+    powerOn=false;
   }
   
   public void colocarPowerUp() {
-    for (int i = powerup.size() - 1; i >= 0; i--) {
-      PowerUp power = powerup.get(i);
+    for (int i = powerUp.size() - 1; i >= 0; i--) {
+      PowerUp power = powerUp.get(i);
       power.display();
-      println("powerUp is "+PowerOn);
+      //println("powerUp is "+powerOn);
     }
   }
   
   public void eliminarPowerUp(){
-    for (int i = powerup.size() - 1; i >= 0; i--) {
-      PowerUp power = powerup.get(i);
+    for (int i = powerUp.size() - 1; i >= 0; i--) {
+      PowerUp power = powerUp.get(i);
       if (Collider.colisionGatoPowerUp(jugando.player,power)){
-        PowerOn=true;
-        powerup.remove(i);
-        CrearPower = true;
+        powerOn=true;
+        powerUp.remove(i);
+        crearPower = true;
       }
       //  if (Collider.colisionBlasPowerUp(jugando.disparar.balasJ, power)==true) {
       //    PowerOn=true;
@@ -35,21 +35,21 @@ class SpawnerPower extends GameObject{
      }
    }
    public void crearPowerUp(){
-     powerup.add(new PowerUp());
+     powerUp.add(new PowerUp());
      println("Aparecio un PowerUp (=^._.^=)");
-     CrearPower = false;
+     crearPower = false;
    }
         
     public boolean getCrearPower() {
-    return this.CrearPower;
+    return this.crearPower;
   }
-  public void setCrearPower(boolean CrearPower) {
-     this.CrearPower=CrearPower;
+  public void setCrearPower(boolean crearPower) {
+     this.crearPower=crearPower;
   }
    public boolean getPowerOn() {
-    return this.PowerOn;
+    return this.powerOn;
   }
-  public void setPowerOn(boolean CrearPower) {
-     this.PowerOn=CrearPower;
+  public void setPowerOn(boolean crearPower) {
+     this.powerOn=crearPower;
   }
 }

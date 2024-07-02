@@ -5,7 +5,7 @@ class Enemigo3 extends GameObject{
    private float b; // Coeficiente lineal de la parábola
    private float c; // Altura máxima de la parábola (punto más alto
    private float x; // Tiempo inicial
-   private float aumentoTiempo; // Incremento de tiempo
+   //private float aumentoTiempo; // Incremento de tiempo
    private float y;
    private int lugarAparicion;
   

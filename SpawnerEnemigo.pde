@@ -24,7 +24,7 @@ class SpawnerEnemigo extends GameObject{
       Enemigo1 enemigo = enemigos.get(i);
       enemigo.display();
       enemigo.move();
-      if (Collider.colisionBlasEnemigo1(jugando.disparar.balasJ, enemigo)||Collider.colisionBlasEnemigo1(jugando.disparar.BalasPu, enemigo)) {
+      if (Collider.colisionBlasEnemigo1(jugando.disparar.balasJ, enemigo)||Collider.colisionBlasEnemigo1(jugando.disparar.balasP, enemigo)) {
         gato.setPuntaje(gato.getPuntaje() + 10);
         enemigos.remove(i);
         println("~(x_x)~ enemigo1 se murio");
@@ -36,9 +36,9 @@ class SpawnerEnemigo extends GameObject{
     /* SPAWN ENEMIGO 3 */
     for (int i = enemigo3.size() - 1; i >= 0; i--) {
       Enemigo3 enemy = enemigo3.get(i);
-      enemy.display();
       enemy.move();
-      if (Collider.colisionBlasEnemigo3(jugando.disparar.balasJ, enemy)||Collider.colisionBlasEnemigo3(jugando.disparar.BalasPu, enemy)) {
+      enemy.display();
+      if (Collider.colisionBlasEnemigo3(jugando.disparar.balasJ, enemy)||Collider.colisionBlasEnemigo3(jugando.disparar.balasP, enemy)) {
         gato.setPuntaje(gato.getPuntaje() + 30);
         enemigo3.remove(i);
         println("(=^+_+^=) Enemigo1 se murio");
@@ -57,7 +57,7 @@ class SpawnerEnemigo extends GameObject{
         println("enemigo3 coliciono con el borde (=^+_+^=)");
         sePuedeCrear = true;
       }
-      if(Collider.colisionAreaEnemigo3(gato,this) == true && sePuedeCrear == false){
+      if(Collider.colisionAreaEnemigo3(gato,enemy) == true && sePuedeCrear == false){
         gato.quitarVida();
         enemigo3.remove(i);
         println("enemigo3 coliciono con el Jugador (=^+_+^=)");

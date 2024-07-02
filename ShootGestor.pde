@@ -1,17 +1,17 @@
 class ShootGestor extends GameObject{
   
   private ArrayList<Bullets> balasJ;
-  private ArrayList<Bullets> BalasE;
-  private ArrayList<Bullets> BalasPu;
+  private ArrayList<Bullets> balasE;
+  private ArrayList<Bullets> balasP;
   PVector origen, direcc;
-  private boolean PoweUp;
+  private boolean poweUp;
   
   public ShootGestor(){
     balasJ = new ArrayList<Bullets>();
-    BalasE = new ArrayList<Bullets>();
-    BalasPu = new ArrayList<Bullets>();
+    balasE = new ArrayList<Bullets>();
+    balasP = new ArrayList<Bullets>();
     direcc = new PVector(0,0);
-    PoweUp=false;
+    poweUp=false;
   }
   
   public void playerShoot(){
@@ -37,16 +37,16 @@ class ShootGestor extends GameObject{
     direcc = new PVector(mouseX,mouseY);
     PVector d = PVector.sub(direcc,origen).normalize(); //calcula la direccion normalizada para el disparo
     Bullets nuevabala = new Bullets(d, origen);
-    BalasPu.add(nuevabala);
+    balasP.add(nuevabala);
   }
   
   public void spawnBalaPu(){
-     for (int i = BalasPu.size()-1; i >= 0; i--) {
-      Bullets b = BalasPu.get(i);
+     for (int i = balasP.size()-1; i >= 0; i--) {
+      Bullets b = balasP.get(i);
       b.disparoPlayer();
       b.display(3);
       if (b.getDestruir()) {
-        BalasPu.remove(i);
+        balasP.remove(i);
       }
     }
   }
@@ -54,38 +54,38 @@ class ShootGestor extends GameObject{
   /* disparo enemigo*/
   
   public void EnemyShoot(){
-    PVector d = PVector.sub(jugando.player.getPos(),OrigenEnemy).normalize();
-    Bullets nuevabala = new Bullets(d, OrigenEnemy);
-    BalasE.add(nuevabala);
+    PVector d = PVector.sub(jugando.player.getPos(),origenEnemy).normalize();
+    Bullets nuevabala = new Bullets(d, origenEnemy);
+    balasE.add(nuevabala);
   }
-  public void proyectil(){
-     for (int i = BalasE.size()-1; i >= 0; i--) {
-      Bullets b = BalasE.get(i);
+  public void spawnerShoot(){
+     for (int i = balasE.size()-1; i >= 0; i--) {
+      Bullets b = balasE.get(i);
       b.disparoPlayer();
       b.display(2);
       
       if (b.getPos().x >= width-50 || b.getPos().x<=0 || b.getPos().y >= height  || b.getPos().y<=0 ){
         println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
-        BalasE.remove(i);
+        balasE.remove(i);
       }
       if ( Collider.colisionAreaEnemigo2(jugando.player,this) == true ) {
-        BalasE.remove(i);
+        balasE.remove(i);
         jugando.player.quitarVida();
         println("golpeo jugador");
       }
       if(Collider.colisionEntreBalas(jugando.disparar.balasJ,b)==true){
-        BalasE.remove(i);
+        balasE.remove(i);
       }
-      if(Collider.colisionEntreBalas(jugando.disparar.BalasPu,b)==true){
-        BalasE.remove(i);
+      if(Collider.colisionEntreBalas(jugando.disparar.balasP,b)==true){
+        balasE.remove(i);
       }
     }
   }
 /* metodos accesores de PowerUp */
   public boolean getPowerUp() {
-    return this.PoweUp;
+    return this.poweUp;
   }
   public void setPowerUp(boolean Activar) {
-     this.PoweUp=Activar;
+     this.poweUp=Activar;
   }
 }

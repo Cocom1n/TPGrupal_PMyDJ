@@ -1,7 +1,7 @@
 private PImage fondo, hud;
 private SpriteGestor spriteGestor;
 private int estado;
-private PVector OrigenEnemy;
+private PVector origenEnemy;
 private Nivel jugando;
 
 void setup(){
