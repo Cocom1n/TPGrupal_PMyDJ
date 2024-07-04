@@ -27,6 +27,7 @@ class Nivel{
   public int mostrarJuego(){
     
     origenEnemy= new PVector(enemigo2.getPos().x, enemigo2.getPos().y);
+    origen2= new PVector(enemigo2.getPos().x, 530);
     player.display();
     player.mover();
     disparar.spawnBalaJugador();
@@ -58,6 +59,19 @@ class Nivel{
         disparar.spawnBalaPu();
         break;
       }
+      case 4:
+      {
+        spawnerEnemigo.colocarEnemigo(player,2);
+        spawnerEnemigo.eliminarEnemigo(player);
+        enemigo2.display();
+        disparar.spawnerShoot();
+        powerup.colocarPowerUp();
+        powerup.eliminarPowerUp();
+        disparar.spawnBalaPu();
+        enemigo2.display2();
+        disparar.spawnerShoot2();
+        break;
+      }
     }
 
     tiempoRespawn(1000);
@@ -83,6 +97,9 @@ class Nivel{
       timeD++;
       if(timeD==5){
         disparar.EnemyShoot();
+        if(dificultad == 4){
+          disparar.EnemyShoot2();
+        }
         timeD=0;
       }
       tiempoInicial2=millis();
@@ -132,19 +149,19 @@ public void tiempoPower(int tiempoSpawn){
     int puntajeActual = player.getPuntaje();
     
     if (puntajeActual >= 30 && lastScore < 30) {
-        dificultad++;
-        lastScore = 30;
-        println(dificultad);
+      dificultad++;
+      lastScore = 30;
+      println(dificultad);
     }
     if (puntajeActual >= 100 && lastScore < 100) {
-        dificultad++;
-        lastScore = 100;
-        println(dificultad);
+      dificultad++;
+      lastScore = 100;
+      println(dificultad);
     }
-    /*if (puntajeActual >= 200 && lastScore < 200) {
-        dificultad++;
-        lastScore = 200;
-        println(dificultad);
-    }*/
+    if (puntajeActual >= 200 && lastScore < 200) {
+      dificultad++;
+      lastScore = 200;
+      println(dificultad);
+    }
   }
 }

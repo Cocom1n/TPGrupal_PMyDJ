@@ -15,22 +15,36 @@ class Gato extends GameObject{
   }
   
   public void display(){
-    spriteGestor.animate(getPos(),getTam(),"data/cat1.png");
+    if(!jugando.powerup.getPowerOn()){
+      spriteGestor.animate(getPos(),getTam(),"data/cat1.png");
+    } else {
+      spriteGestor.animate(getPos(),getTam(),"data/cat2.png");
+    }
+    
     image(imagen,mouseX,mouseY);
   }
   
   public void mover(){
     if (arriba) {
-      getPos().y -= getVel();
+      if(getPos().y-getTam().y/2 >0){
+        getPos().y -= getVel();
+      }
+      
     }
     if (abajo) {
-      getPos().y += getVel();
+      if(getPos().y+getTam().y+10 < height){
+        getPos().y += getVel();
+      }
     }
     if (izqierda) {
-      getPos().x -= getVel();
+      if(getPos().x-getTam().x/2 > 0){
+        getPos().x -= getVel();
+      }
     }
     if (derecha) {
-      getPos().x += getVel();
+      if(getPos().x+getTam().x/2 < width){
+        getPos().x += getVel();
+      }
     }
   }
   

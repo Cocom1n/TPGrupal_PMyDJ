@@ -3,6 +3,7 @@ class ShootGestor extends GameObject{
   private ArrayList<Bullets> balasJ;
   private ArrayList<Bullets> balasE;
   private ArrayList<Bullets> balasP;
+  private ArrayList<Bullets> balasE2;
   PVector origen, direcc;
   private boolean poweUp;
   
@@ -10,6 +11,7 @@ class ShootGestor extends GameObject{
     balasJ = new ArrayList<Bullets>();
     balasE = new ArrayList<Bullets>();
     balasP = new ArrayList<Bullets>();
+    balasE2 = new ArrayList<Bullets>();
     direcc = new PVector(0,0);
     poweUp=false;
   }
@@ -79,6 +81,34 @@ class ShootGestor extends GameObject{
       }
     }
   }
+  
+  public void EnemyShoot2(){
+    PVector d = PVector.sub(jugando.player.getPos(),origen2).normalize();
+    Bullets nuevabala = new Bullets(d, origen2);
+    balasE2.add(nuevabala);
+  }
+  
+  public void spawnerShoot2(){
+    for (int i = balasE2.size()-1; i >= 0; i--) {
+      Bullets b = balasE2.get(i);
+       b.disparoPlayer();
+      b.display(2);
+      if (b.getPos().x >= width-50 || b.getPos().x<=0 || b.getPos().y >= height  || b.getPos().y<=0 ){
+        balasE2.remove(i);
+      }
+      if ( Collider.colisionAreaEnemigo2(jugando.player,this) == true ) {
+        balasE2.remove(i);
+        jugando.player.quitarVida();
+      }
+      if(Collider.colisionEntreBalas(jugando.disparar.balasJ,b)==true){
+        balasE2.remove(i);
+      }
+      if(Collider.colisionEntreBalas(jugando.disparar.balasP,b)==true){
+        balasE2.remove(i);
+      }
+    }
+  }
+
 /* metodos accesores de PowerUp */
   public boolean getPowerUp() {
     return this.poweUp;

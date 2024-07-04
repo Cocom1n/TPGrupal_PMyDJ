@@ -13,8 +13,7 @@ class SpawnerEnemigo extends GameObject{
     
     sePuedeCrear = false;
   }
-  
-  
+
   public void colocarEnemigo(Gato gato, int dificultad) {
     
     if (dificultad == 1){
@@ -91,19 +90,16 @@ class SpawnerEnemigo extends GameObject{
       if (Collider.colisionAreaEnemigo1(jugando.player, enemigo) == true) {
         gato.quitarVida();
         enemigos.remove(i);
-        println("(`w´)/ enemigo1 coliciono con jugador");
+        //println("(`w´)/ enemigo1 coliciono con jugador");
       }
     }
-    
-    textSize(25);
-    
   }
    
-   public void crearEnemigo(){
-     enemigo3.add(new Enemigo3(int(random(1,5))));
-     println("Nuevo enemigo3 (=^._.^=)");
-     sePuedeCrear = false;
-   }
+  public void crearEnemigo(){
+    enemigo3.add(new Enemigo3(int(random(1,5))));
+    println("Nuevo enemigo3 (=^._.^=)");
+    sePuedeCrear = false;
+  }
   
   public boolean getSePuedeCrear() {
     return this.sePuedeCrear;
