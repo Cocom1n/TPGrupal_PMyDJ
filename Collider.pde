@@ -24,10 +24,26 @@ static class Collider{
     return false;
   }
   
-  public static boolean colisionAreaEnemigo1(Gato a, Enemigo1 b) {
-    if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
-      return true;
-    }
+   public static boolean colisionAreaEnemigo1(Gato q, Enemigo1 w){
+    ArrayList<Gato> gato = new ArrayList <Gato>();
+    gato.add(q);
+    ArrayList<Enemigo1> enemigo1 = new ArrayList <Enemigo1>();
+    enemigo1.add(w);
+    gato.sort((a, b) -> Float.compare(a.posicion.x, b.posicion.x));
+    enemigo1.sort((a, b) -> Float.compare(a.posicion.x, b.posicion.x));
+      for (int i = 0; i < gato.size(); i++) {
+        Gato gat = gato.get(i);
+        for (int j = 0; j < enemigo1.size(); j++) {
+          Enemigo1 enemy1 = enemigo1.get(j);
+            if (enemy1.posicion.x > gat.posicion.x+gat.tamanio.x) {
+              break;
+            }
+            if (dist(gat.posicion.x, gat.posicion.y, enemy1.posicion.x, enemy1.posicion.y) < (gat.tamanio.x / 2 + enemy1.tamanio.x / 2)) {
+              println("dame pescado");
+              return true;
+            }
+        }
+      }
     return false;
   }
   

@@ -1,8 +1,14 @@
+import ddf.minim.*;
+/** indica el minim */
+private Minim minim;
+/** indica el AudioPlayer */
+private AudioPlayer sonido;
 private PImage fondo, hud;
 private SpriteGestor spriteGestor;
 private int estado;
 private PVector origenEnemy, origen2;
 private Nivel jugando;
+private Reproductor reproductor;
 
 void setup(){
   size(800, 600);
@@ -13,6 +19,9 @@ void setup(){
   estado = MaquinaEstados.INSTRUCCIONANDO;
   spriteGestor= new SpriteGestor();
   jugando = new Nivel();
+  minim = new Minim(this);
+  sonido = minim.loadFile("juego.wav");
+  reproductor = new Reproductor();
 }
 
 
@@ -23,6 +32,7 @@ void draw(){
     {
       spriteGestor.animate(new PVector(width/2, height/2), new PVector(800, 600), "data/catfish.jpg");
       jugando.player.reset();
+      jugando.disparar.reset();
       break;
     }
 
@@ -34,7 +44,8 @@ void draw(){
       String score = nf(jugando.player.getPuntaje(), 8);
       String vida = nf(jugando.player.getVida(), 2);
       text(vida, 675, 580);
-      text(score, 160, 580); 
+      text(score, 160, 580);
+      reproductor.playSonido(sonido);
       break;
     }
     
@@ -44,7 +55,8 @@ void draw(){
       String score = nf(jugando.player.getPuntaje(), 9);
       text("Maximo Puntaje", 20, height * .4); 
       text(score, 50, height * .5);
-      text("Ánimo bro! (^0^)/", 20, height * .6); 
+      text("Ánimo bro! (^0^)/", 20, height * .6);
+      reproductor.stopSonido(sonido);
       break;
     }
   }

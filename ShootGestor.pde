@@ -108,6 +108,21 @@ class ShootGestor extends GameObject{
       }
     }
   }
+  
+  public void reset(){
+    for (int i = balasE.size()-1; i >= 0; i--) {
+     balasE.remove(i); 
+    }
+    for (int i = balasJ.size()-1; i >= 0; i--) {
+     balasJ.remove(i); 
+    }
+    for (int i = balasP.size()-1; i >= 0; i--) {
+     balasP.remove(i); 
+    }
+    for (int i = balasE2.size()-1; i >= 0; i--) {
+     balasE2.remove(i); 
+    }
+  }
 
 /* metodos accesores de PowerUp */
   public boolean getPowerUp() {
