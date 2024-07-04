@@ -34,7 +34,6 @@ class Bullets extends GameObject{
   public void disparoPlayer(){
     getPos().add(PVector.mult(direccion,getVel()));
     if (getPos().x >= width-50 || getPos().x<=0  || getPos().y >= height || getPos().y<=0 ){
-      println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
       setDestruir(true);
     }
   }

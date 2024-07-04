@@ -28,8 +28,12 @@ void draw(){
   case MaquinaEstados.JUGANDO:
     {
       image(fondo, width/2, height/2, width, height);
-      image(hud, width/2, height/2, width, height);
       estado = jugando.mostrarJuego();
+      image(hud, width/2, height/2, width, height);
+      String score = nf(jugando.player.getPuntaje(), 9);
+      String vida = nf(jugando.player.getVida(), 2);
+      text(vida, 675, 576);
+      text(score, 155, 570); 
       break;
     }
     

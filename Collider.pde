@@ -67,7 +67,6 @@ static class Collider{
     enemigo3.add(w);
     sort.sort((a, b) -> Float.compare(a.posicion.x, b.posicion.x));
     enemigo3.sort((a, b) -> Float.compare(a.posicion.x, b.posicion.x));
-    println("hola");
       for (int i = 0; i < sort.size(); i++) {
         Bullets bala = sort.get(i);
         //println("hola");
@@ -109,9 +108,17 @@ static class Collider{
   }
  /*Colisiones PowerUp*/
  public static boolean colisionGatoPowerUp(Gato a, PowerUp b){
-   if (dist(a.posicion.x, a.posicion.y, b.posicion.x, b.posicion.y) < (a.tamanio.x / 2 + b.tamanio.x / 2)) {
-      return true;
-    }
-    return false;
+   ArrayList<PowerUp> powerup = new ArrayList <PowerUp>();
+   powerup.add(b);
+   powerup.sort((a1,a2) -> Float.compare(a1.posicion.x,a2.posicion.x));
+   for (int i = 0; i < powerup.size(); i++) {
+     PowerUp power = powerup.get(i);
+     Gato gato = a;
+     if(gato.posicion.x > power.posicion.x+power.tamanio.x/2)break;
+     if (dist(gato.posicion.x, gato.posicion.y, power.posicion.x, power.posicion.y) < (gato.tamanio.x / 2 + power.tamanio.x / 2)) {
+       return true;
+      }
+   }
+   return false;
  }
 }

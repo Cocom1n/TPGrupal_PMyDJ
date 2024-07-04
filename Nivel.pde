@@ -12,6 +12,8 @@ class Nivel{
   private int timeS;
   private long tiempoInicial4;
   private int timeActive;
+  private int dificultad;
+  private int lastScore = 0;
   
   public Nivel(){
     player = new Gato();
@@ -19,32 +21,62 @@ class Nivel{
     disparar = new ShootGestor();
     spawnerEnemigo = new SpawnerEnemigo();
     powerup= new SpawnerPower();
+    dificultad = 1;
   }
   
   public int mostrarJuego(){
+    
     origenEnemy= new PVector(enemigo2.getPos().x, enemigo2.getPos().y);
     player.display();
     player.mover();
-    enemigo2.display();
-    spawnerEnemigo.colocarEnemigo(player);
-    disparar.spawnBalaPu();
     disparar.spawnBalaJugador();
-    spawnerEnemigo.eliminarEnemigo(player);
-    disparar.spawnerShoot();
-    powerup.colocarPowerUp();
-    powerup.eliminarPowerUp();
     
+    switch(dificultad) {
+      case 1:
+      {
+        spawnerEnemigo.colocarEnemigo(player,1);
+        spawnerEnemigo.eliminarEnemigo(player);
+        break;
+      }
+      case 2:
+      {
+        spawnerEnemigo.colocarEnemigo(player,2);
+        spawnerEnemigo.eliminarEnemigo(player);
+        powerup.colocarPowerUp();
+        powerup.eliminarPowerUp();
+        disparar.spawnBalaPu();
+        break;
+      }
+      case 3:
+      {
+        spawnerEnemigo.colocarEnemigo(player,2);
+        spawnerEnemigo.eliminarEnemigo(player);
+        enemigo2.display();
+        disparar.spawnerShoot();
+        powerup.colocarPowerUp();
+        powerup.eliminarPowerUp();
+        disparar.spawnBalaPu();
+        break;
+      }
+    }
+
     tiempoRespawn(1000);
     disparo(1000);
     tiempoPower(1000);
     tiempoPowerActive(1000);
+    
+    aumentarNivel();
 
     if(player.getVida() == 0){
       println("vidas " + player.getVida());
+      dificultad = 1;
+      lastScore = 0;
       return 3;
     }
     return 2;
   }
+  
+  /*Temporizadores de disparo y spawn*/
   
   public void disparo(int tiempoDisparo){
    if(millis()>=tiempoInicial2+tiempoDisparo && spawnerEnemigo.getSePuedeCrear() == true){
@@ -81,18 +113,38 @@ public void tiempoPower(int tiempoSpawn){
 }
 
 /*powerup*/
-public void tiempoPowerActive(int tiempoActivo){
-  if(powerup.getPowerOn() == true){
-    disparar.setPowerUp(true);
-  }
-  if(millis()>=tiempoInicial4+tiempoActivo && powerup.getPowerOn() == true){
-    timeActive++;
-    if(timeActive==5){
-      disparar.setPowerUp(false);
-      powerup.setPowerOn(false);
-      timeActive=0;
+  public void tiempoPowerActive(int tiempoActivo){
+    if(powerup.getPowerOn() == true){
+      disparar.setPowerUp(true);
     }
-    tiempoInicial4=millis();
+    if(millis()>=tiempoInicial4+tiempoActivo && powerup.getPowerOn() == true){
+      timeActive++;
+      if(timeActive==5){
+        disparar.setPowerUp(false);
+        powerup.setPowerOn(false);
+        timeActive=0;
+      }
+      tiempoInicial4=millis();
+    }
   }
-}
+  
+  public void aumentarNivel(){
+    int puntajeActual = player.getPuntaje();
+    
+    if (puntajeActual >= 30 && lastScore < 30) {
+        dificultad++;
+        lastScore = 30;
+        println(dificultad);
+    }
+    if (puntajeActual >= 100 && lastScore < 100) {
+        dificultad++;
+        lastScore = 100;
+        println(dificultad);
+    }
+    /*if (puntajeActual >= 200 && lastScore < 200) {
+        dificultad++;
+        lastScore = 200;
+        println(dificultad);
+    }*/
+  }
 }
