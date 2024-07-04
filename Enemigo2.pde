@@ -1,13 +1,13 @@
 class Enemigo2 extends GameObject{
  
-  private float angulo;
+  private float angulo,angulo2;
   private PVector pos2;
  
   public Enemigo2(){
     //this.imagen = loadImage("data/enemigo2.png");
-    setPos(new PVector(width/3+100,35 ));
+    setPos(new PVector(width/3+100,34 ));
     setTam(new PVector(48,53));
-    pos2 = (new PVector(width/3+100,530 ));
+    pos2 = (new PVector(width/3+150,530 ));
     angulo=0;
   }
   
@@ -19,18 +19,22 @@ class Enemigo2 extends GameObject{
   
   public void display2(){
     this.imagen = loadImage("data/enemigo2Flip.png");
-    image(imagen.get(0,0,48,53),pos2.x, pos2.y, getTam().x*1.3,getTam().y*1.3);
+    image(imagen.get(0,0,48,53),pos2.x, 530, getTam().x*1.3,getTam().y*1.3);
     move2();
   }
   
   public void move(){
     angulo+=0.05;
-    getPos().x+=cos(angulo)*8;
+    getPos().x+=cos(angulo)*15;
   }
   
   public void move2(){
-    angulo+=0.05;
-    pos2.x+=cos(angulo)*8;
+    angulo2+=0.05;
+    pos2.x+=cos(angulo2)*10;
+  }
+  
+  public PVector getPos2(){
+    return this.pos2;
   }
 
 }

@@ -27,7 +27,7 @@ class Nivel{
   public int mostrarJuego(){
     
     origenEnemy= new PVector(enemigo2.getPos().x, enemigo2.getPos().y);
-    origen2= new PVector(enemigo2.getPos().x, 530);
+    origen2= new PVector(enemigo2.getPos2().x, 530);
     player.display();
     player.mover();
     disparar.spawnBalaJugador();

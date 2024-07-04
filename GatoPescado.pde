@@ -6,6 +6,7 @@ private Nivel jugando;
 
 void setup(){
   size(800, 600);
+  textSize(30);
   imageMode(CENTER);
   this.fondo = loadImage("data/fondo.png");
   this.hud = loadImage("data/hud.png");
@@ -30,10 +31,10 @@ void draw(){
       image(fondo, width/2, height/2, width, height);
       estado = jugando.mostrarJuego();
       image(hud, width/2, height/2, width, height);
-      String score = nf(jugando.player.getPuntaje(), 9);
+      String score = nf(jugando.player.getPuntaje(), 8);
       String vida = nf(jugando.player.getVida(), 2);
-      text(vida, 675, 576);
-      text(score, 155, 570); 
+      text(vida, 675, 580);
+      text(score, 160, 580); 
       break;
     }
     
@@ -41,7 +42,6 @@ void draw(){
     {
       spriteGestor.animate(new PVector(width/2,height/2),new PVector(800,600),"data/end.jpg");
       String score = nf(jugando.player.getPuntaje(), 9);
-      textSize(30);
       text("Maximo Puntaje", 20, height * .4); 
       text(score, 50, height * .5);
       text("Ánimo bro! (^0^)/", 20, height * .6); 
