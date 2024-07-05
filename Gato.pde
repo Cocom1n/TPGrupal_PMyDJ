@@ -8,7 +8,7 @@ class Gato extends GameObject{
   public Gato(){
     setPos(new PVector(width/2-10,height/2));
     setTam(new PVector(52,56));
-    setVel(5);
+    setVel(200);
     this.imagen = loadImage("data/mira.png");
     vida=3;
     puntaje = 0;
@@ -27,23 +27,23 @@ class Gato extends GameObject{
   public void mover(){
     if (arriba) {
       if(getPos().y-getTam().y/2 >0){
-        getPos().y -= getVel();
+        getPos().y -= getVel()*Time.getDeltaTime(frameRate);
       }
       
     }
     if (abajo) {
       if(getPos().y+getTam().y+10 < height){
-        getPos().y += getVel();
+        getPos().y += getVel()*Time.getDeltaTime(frameRate);
       }
     }
     if (izqierda) {
       if(getPos().x-getTam().x/2 > 0){
-        getPos().x -= getVel();
+        getPos().x -= getVel()*Time.getDeltaTime(frameRate);
       }
     }
     if (derecha) {
       if(getPos().x+getTam().x/2 < width){
-        getPos().x += getVel();
+        getPos().x += getVel()*Time.getDeltaTime(frameRate);
       }
     }
   }

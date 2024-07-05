@@ -25,12 +25,12 @@ class Enemigo2 extends GameObject{
   
   public void move(){
     angulo+=0.05;
-    getPos().x+=cos(angulo)*15;
+    getPos().x+=cos(angulo)*500* Time.getDeltaTime(frameRate);
   }
   
   public void move2(){
     angulo2+=0.05;
-    pos2.x+=cos(angulo2)*10;
+    pos2.x+=cos(angulo2)*600* Time.getDeltaTime(frameRate);
   }
   
   public PVector getPos2(){

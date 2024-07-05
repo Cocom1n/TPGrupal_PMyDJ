@@ -5,7 +5,7 @@ class Bullets extends GameObject{
   public Bullets(PVector dire, PVector pos){
     setPos(pos);
     setTam(new PVector(0,00));
-    setVel(5);
+    setVel(250);
     setDestruir(false);
     this.direccion = dire;
   }
@@ -32,8 +32,8 @@ class Bullets extends GameObject{
   }
   
   public void disparoPlayer(){
-    getPos().add(PVector.mult(direccion,getVel()));
-    if (getPos().x >= width-50 || getPos().x<=0  || getPos().y >= height || getPos().y<=0 ){
+    getPos().add(PVector.mult(direccion,getVel()*Time.getDeltaTime(frameRate)));
+    if (getPos().x >= width || getPos().x<=0  || getPos().y >= height || getPos().y<=0 ){
       setDestruir(true);
     }
   }
