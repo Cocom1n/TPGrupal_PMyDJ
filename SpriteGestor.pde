@@ -11,8 +11,6 @@ class SpriteGestor extends GameObject {
   
   /* Constructor por defecto */
   public SpriteGestor() {
-   //this.imagen = loadImage("data/cat1.png");
-
    this.widthFrame=0;
    this.heightFrame=0;
    this.xFrame=0;
@@ -27,11 +25,9 @@ class SpriteGestor extends GameObject {
     PImage coso = loadImage(imagen);
     this.widthFrame=int(tam.x);
      this.heightFrame=int(tam.y);
-    int framesPorSegundo = round(frameRate);
-    float deltaTime = 1.0/framesPorSegundo;
     setTam(tam);
     image(coso.get(this.xFrame, yFrame, widthFrame, heightFrame), pos.x, pos.y);
-    xFrameFloat+=(tam.x * velTransicion * deltaTime);
+    xFrameFloat+=(tam.x * velTransicion * Time.getDeltaTime(frameRate));
     if (xFrameFloat>=nextxFrameFloat) {
      this.xFrame+=tam.x;
      nextxFrameFloat=xFrame + tam.x;
@@ -41,6 +37,5 @@ class SpriteGestor extends GameObject {
        this.nextxFrameFloat=tam.x;
        }
      }
-    
   }
 }
