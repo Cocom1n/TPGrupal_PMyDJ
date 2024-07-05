@@ -14,7 +14,6 @@ class SpawnerPower extends GameObject{
     for (int i = powerUp.size() - 1; i >= 0; i--) {
       PowerUp power = powerUp.get(i);
       power.display();
-      //println("powerUp is "+powerOn);
     }
   }
   
@@ -26,17 +25,10 @@ class SpawnerPower extends GameObject{
         powerUp.remove(i);
         crearPower = true;
       }
-      //  if (Collider.colisionBlasPowerUp(jugando.disparar.balasJ, power)==true) {
-      //    PowerOn=true;
-      //  powerup.remove(i);
-      //  println("Chau (=^+_+^=)");
-      //  CrearPower = true;
-      //}
      }
    }
    public void crearPowerUp(){
      powerUp.add(new PowerUp());
-     println("Aparecio un PowerUp (=^._.^=)");
      crearPower = false;
    }
         

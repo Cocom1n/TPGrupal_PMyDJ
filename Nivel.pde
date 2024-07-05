@@ -82,7 +82,6 @@ class Nivel{
     aumentarNivel();
 
     if(player.getVida() == 0){
-      println("vidas " + player.getVida());
       dificultad = 1;
       lastScore = 0;
       return 3;
@@ -151,17 +150,14 @@ public void tiempoPower(int tiempoSpawn){
     if (puntajeActual >= 30 && lastScore < 30) {
       dificultad++;
       lastScore = 30;
-      println(dificultad);
     }
     if (puntajeActual >= 100 && lastScore < 100) {
       dificultad++;
       lastScore = 100;
-      println(dificultad);
     }
     if (puntajeActual >= 200 && lastScore < 200) {
       dificultad++;
       lastScore = 200;
-      println(dificultad);
     }
   }
 }

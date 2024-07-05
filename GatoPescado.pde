@@ -3,6 +3,8 @@ import ddf.minim.*;
 private Minim minim;
 /** indica el AudioPlayer */
 private AudioPlayer sonido;
+private AudioPlayer sonido2;
+private AudioPlayer sonido3;
 private PImage fondo, hud;
 private SpriteGestor spriteGestor;
 private int estado;
@@ -21,6 +23,8 @@ void setup(){
   jugando = new Nivel();
   minim = new Minim(this);
   sonido = minim.loadFile("juego.wav");
+  sonido2 = minim.loadFile("final.mp3");
+  sonido3 = minim.loadFile("Cats.mp3");
   reproductor = new Reproductor();
 }
 
@@ -33,6 +37,8 @@ void draw(){
       spriteGestor.animate(new PVector(width/2, height/2), new PVector(800, 600), "data/catfish.jpg");
       jugando.player.reset();
       jugando.disparar.reset();
+      reproductor.stopSonido(sonido2);
+      reproductor.playSonido(sonido3);
       break;
     }
 
@@ -45,6 +51,7 @@ void draw(){
       String vida = nf(jugando.player.getVida(), 2);
       text(vida, 675, 580);
       text(score, 160, 580);
+      reproductor.stopSonido(sonido3);
       reproductor.playSonido(sonido);
       break;
     }
@@ -57,6 +64,7 @@ void draw(){
       text(score, 50, height * .5);
       text("Ánimo bro! (^0^)/", 20, height * .6);
       reproductor.stopSonido(sonido);
+      reproductor.playSonido(sonido2);
       break;
     }
   }

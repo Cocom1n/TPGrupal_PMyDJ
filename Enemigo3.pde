@@ -46,10 +46,6 @@ class Enemigo3 extends GameObject{
     x += velocidad * Time.getDeltaTime(frameRate);
   }
   
-  //void actualizar(){
-  //  x += aumentoTiempo;
-  //}
-  
    public float getX(){
     return this.x;
   }

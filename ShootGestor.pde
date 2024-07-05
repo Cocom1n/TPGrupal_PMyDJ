@@ -69,7 +69,7 @@ class ShootGestor extends GameObject{
       if (b.getPos().x >= width-50 || b.getPos().x<=0 || b.getPos().y >= height  || b.getPos().y<=0 ){
         balasE.remove(i);
       }
-      if ( Collider.colisionAreaEnemigo2(jugando.player,this) == true ) {
+      if ( Collider.colisionAreaEnemigo2(balasE,jugando.player) == true ) {
         balasE.remove(i);
         jugando.player.quitarVida();
       }
@@ -96,7 +96,7 @@ class ShootGestor extends GameObject{
       if (b.getPos().x >= width-50 || b.getPos().x<=0 || b.getPos().y >= height  || b.getPos().y<=0 ){
         balasE2.remove(i);
       }
-      if ( Collider.colisionAreaEnemigo2(jugando.player,this) == true ) {
+      if ( Collider.colisionAreaEnemigo2(balasE2,jugando.player) == true ) {
         balasE2.remove(i);
         jugando.player.quitarVida();
       }

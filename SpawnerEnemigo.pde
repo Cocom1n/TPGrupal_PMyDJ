@@ -28,7 +28,6 @@ class SpawnerEnemigo extends GameObject{
         if (Collider.colisionBlasEnemigo1(jugando.disparar.balasJ, enemigo)||Collider.colisionBlasEnemigo1(jugando.disparar.balasP, enemigo)) {
           gato.setPuntaje(gato.getPuntaje() + 10);
           enemigos.remove(i);
-          //println("~(x_x)~ enemigo1 se murio");
         }
         if(enemigo.getDestruir()){
           enemigos.remove(i);
@@ -48,7 +47,6 @@ class SpawnerEnemigo extends GameObject{
         if (Collider.colisionBlasEnemigo1(jugando.disparar.balasJ, enemigo)||Collider.colisionBlasEnemigo1(jugando.disparar.balasP, enemigo)) {
           gato.setPuntaje(gato.getPuntaje() + 10);
           enemigos.remove(i);
-          //println("~(x_x)~ enemigo1 se murio");
         }
         if(enemigo.getDestruir()){
           enemigos.remove(i);
@@ -62,7 +60,6 @@ class SpawnerEnemigo extends GameObject{
         if (Collider.colisionBlasEnemigo3(jugando.disparar.balasJ, enemy)||Collider.colisionBlasEnemigo3(jugando.disparar.balasP, enemy)) {
           gato.setPuntaje(gato.getPuntaje() + 30);
           enemigo3.remove(i);
-          //println("(=^+_+^=) Enemigo1 se murio");
           sePuedeCrear = true;
         }
       }
@@ -74,13 +71,11 @@ class SpawnerEnemigo extends GameObject{
       Enemigo3 enemy = enemigo3.get(i);
       if(enemy.getX() > 11.5 && sePuedeCrear == false){
         enemigo3.remove(i);
-        //println("enemigo3 coliciono con el borde (=^+_+^=)");
         sePuedeCrear = true;
       }
       if(Collider.colisionAreaEnemigo3(gato,enemy) == true && sePuedeCrear == false){
         gato.quitarVida();
         enemigo3.remove(i);
-        //println("enemigo3 coliciono con el Jugador (=^+_+^=)");
         sePuedeCrear = true;
       }
     }
@@ -90,14 +85,12 @@ class SpawnerEnemigo extends GameObject{
       if (Collider.colisionAreaEnemigo1(jugando.player, enemigo) == true) {
         gato.quitarVida();
         enemigos.remove(i);
-        //println("(`w´)/ enemigo1 coliciono con jugador");
       }
     }
   }
    
   public void crearEnemigo(){
     enemigo3.add(new Enemigo3(int(random(1,5))));
-    println("Nuevo enemigo3 (=^._.^=)");
     sePuedeCrear = false;
   }
   
